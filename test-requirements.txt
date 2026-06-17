@@ -1,0 +1,2 @@
+# DO NOT MERGE — temporary pin until OCA/sale-channel#43 (sale_import_base, 18.0) lands.
+odoo-addon-sale_import_base @ git+https://github.com/akretion/sale-channel.git@18.0-mig-sale_import_base#subdirectory=sale_import_base
