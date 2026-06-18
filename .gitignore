@@ -86,9 +86,3 @@ docs/_build/
 
 # OCA rules
 !static/lib/
-
-# Secrets
-.env*
-
-# OCA CI generated files (local runs)
-test-constraints.txt
