@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="sale_channel_view_form" model="ir.ui.view">
+        <field name="model">sale.channel</field>
+        <field name="inherit_id" ref="sale_marketplace_amazon.sale_channel_view_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//button[@name='action_amazon_test_connection']"
+                position="after"
+            >
+                <button
+                    name="action_amazon_sync_fba_inventory"
+                    type="object"
+                    string="Sync FBA Inventory"
+                    class="btn-secondary"
+                    invisible="channel_type != 'amazon'"
+                />
+            </xpath>
+            <group name="amazon_config" position="after">
+                <group
+                    name="amazon_fba"
+                    string="FBA"
+                    invisible="channel_type != 'amazon'"
+                >
+                    <field name="last_fba_sync_date" />
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>

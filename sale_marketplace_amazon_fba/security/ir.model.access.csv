@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_scfi_user,sale.channel.fba.inventory user,model_sale_channel_fba_inventory,base.group_user,1,0,0,0
+access_scfi_manager,sale.channel.fba.inventory manager,model_sale_channel_fba_inventory,sales_team.group_sale_manager,1,1,1,1
