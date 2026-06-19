@@ -4,8 +4,10 @@
 from unittest.mock import MagicMock, patch
 
 from odoo.tests.common import TransactionCase
+from odoo.tools import mute_logger
 
 _API_PATH = "odoo.addons.sale_marketplace_amazon.models.sale_channel.SaleChannel"
+_MODEL_PATH = "odoo.addons.sale_marketplace_amazon_pricing.models.sale_channel"
 
 
 def _competitive_payload(asin, amount, mine=False):
@@ -119,6 +121,7 @@ class TestPricing(TransactionCase):
         self.assertEqual(pushed, 0)
         api.patch_listings_item.assert_not_called()
 
+    @mute_logger(_MODEL_PATH)
     def test_push_error_isolation_counts_per_listing(self):
         # two SKUs; the first API call fails, the second succeeds.
         product2 = self.env["product.product"].create(
