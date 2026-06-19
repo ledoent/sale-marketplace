@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_scfo_user,mcf order user,model_sale_channel_fulfillment_order,base.group_user,1,0,0,0
+access_scfo_manager,mcf order manager,model_sale_channel_fulfillment_order,sales_team.group_sale_manager,1,1,1,1
+access_scfol_user,mcf order line user,model_sale_channel_fulfillment_order_line,base.group_user,1,0,0,0
+access_scfol_manager,mcf order line manager,model_sale_channel_fulfillment_order_line,sales_team.group_sale_manager,1,1,1,1

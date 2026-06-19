@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="sale_channel_fulfillment_order_view_tree" model="ir.ui.view">
+        <field name="model">sale.channel.fulfillment.order</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="sale_channel_id" />
+                <field name="picking_id" />
+                <field name="shipping_speed" />
+                <field name="state" />
+                <field name="amazon_status" />
+                <field name="tracking_numbers" />
+            </list>
+        </field>
+    </record>
+
+    <record id="sale_channel_fulfillment_order_view_form" model="ir.ui.view">
+        <field name="model">sale.channel.fulfillment.order</field>
+        <field name="arch" type="xml">
+            <form string="MCF Fulfillment Order">
+                <header>
+                    <button
+                        name="action_submit"
+                        type="object"
+                        string="Submit"
+                        class="btn-primary"
+                        invisible="state != 'draft'"
+                    />
+                    <button
+                        name="action_check_status"
+                        type="object"
+                        string="Check Status"
+                        invisible="state in ('draft', 'cancelled')"
+                    />
+                    <button
+                        name="action_cancel"
+                        type="object"
+                        string="Cancel"
+                        invisible="state in ('complete', 'cancelled')"
+                    />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="sale_channel_id" />
+                        <field name="picking_id" />
+                        <field name="partner_id" />
+                        <field name="shipping_speed" />
+                        <field name="amazon_status" />
+                        <field name="tracking_numbers" />
+                        <field name="carrier" />
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="product_id" />
+                            <field name="seller_sku" />
+                            <field name="quantity" />
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_channel_fulfillment_order_action" model="ir.actions.act_window">
+        <field name="name">MCF Fulfillment Orders</field>
+        <field name="res_model">sale.channel.fulfillment.order</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
