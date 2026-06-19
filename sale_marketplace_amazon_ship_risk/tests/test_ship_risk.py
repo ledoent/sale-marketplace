@@ -16,6 +16,9 @@ class TestShipRisk(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.env = cls.env(
+            context=dict(cls.env.context, test_queue_job_no_delay=True)
+        )
         cls.warehouse = cls.env["stock.warehouse"].search([], limit=1)
         cls.channel = cls.env["sale.channel"].create(
             {
@@ -145,9 +148,7 @@ class TestShipRisk(TransactionCase):
             "FulfillmentChannel": "MFN",
         }
         with patch(f"{_API_PATH}._amazon_get_api", return_value=api):
-            self.env["sale.order"].with_context(
-                test_queue_job_no_delay=True
-            )._cron_amazon_update_ship_risk()
+            self.env["sale.order"]._cron_amazon_update_ship_risk()
         self.assertEqual(self.order.amazon_ship_risk, "on_track")
 
     @mute_logger(_MODEL_PATH)

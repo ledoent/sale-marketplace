@@ -80,6 +80,9 @@ class TestPayment(AccountTestInvoicingCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.env = cls.env(
+            context=dict(cls.env.context, test_queue_job_no_delay=True)
+        )
         revenue = cls.company_data["default_account_revenue"]
         expense = cls.company_data["default_account_expense"]
         cls.channel = cls.env["sale.channel"].create(
@@ -213,9 +216,7 @@ class TestPayment(AccountTestInvoicingCommon):
         api.list_financial_event_groups.return_value.payload = _groups()
         api.list_financial_events_by_group_id.return_value.payload = _events()
         with patch(f"{_API_PATH}._amazon_get_api", return_value=api):
-            self.env["sale.channel"].with_context(
-                test_queue_job_no_delay=True
-            )._cron_amazon_sync_settlements()
+            self.env["sale.channel"]._cron_amazon_sync_settlements()
         self.assertTrue(self._group())
 
     @mute_logger(_MODEL_PATH)
