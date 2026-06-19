@@ -312,7 +312,10 @@ class SaleChannel(models.Model):
                 report.write({"state": "error", "error_message": str(exc)})
                 continue
             self._amazon_parse_returns_xml(report, text)
-            self.last_return_sync_date = fields.Datetime.now()
+            # only advance the cursor when the report actually parsed; a parse
+            # error must not skip the window (it would lose those returns).
+            if report.state == "parsed":
+                self.last_return_sync_date = fields.Datetime.now()
 
     def _amazon_pull_returns(self):
         self.ensure_one()

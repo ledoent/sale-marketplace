@@ -193,8 +193,9 @@ class SaleChannel(models.Model):
                 )
                 if not binding or not buy_box:
                     continue
-                amount = (
+                amount = float(
                     buy_box.get("Price", {}).get("ListingPrice", {}).get("Amount", 0.0)
+                    or 0.0
                 )
                 binding.write(
                     {

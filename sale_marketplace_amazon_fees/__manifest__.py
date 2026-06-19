@@ -10,6 +10,7 @@
     "license": "AGPL-3",
     "depends": [
         "sale_marketplace_amazon_pricing",
+        "queue_job",
     ],
     "external_dependencies": {
         "python": ["python-amazon-sp-api"],

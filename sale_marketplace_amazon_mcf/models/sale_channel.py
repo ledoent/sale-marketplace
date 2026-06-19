@@ -42,7 +42,7 @@ class SaleChannel(models.Model):
                 {
                     "sellerSku": line.seller_sku,
                     "sellerFulfillmentOrderItemId": line.item_id or line.seller_sku,
-                    "quantity": int(line.quantity),
+                    "quantity": int(round(line.quantity)),
                 }
                 for line in order.line_ids
             ],

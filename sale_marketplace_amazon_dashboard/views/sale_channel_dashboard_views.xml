@@ -5,7 +5,7 @@
     <record id="sale_channel_dashboard_view_form" model="ir.ui.view">
         <field name="model">sale.channel.dashboard</field>
         <field name="arch" type="xml">
-            <form string="Amazon Dashboard" create="false" edit="false">
+            <form string="Amazon Dashboard" create="false">
                 <sheet>
                     <group>
                         <field name="sale_channel_id" />
@@ -56,9 +56,21 @@
                     <group string="Returns">
                         <field name="returns_open" />
                         <field name="returns_credited" />
+                        <button
+                            name="action_open_returns_open"
+                            type="object"
+                            string="View Open Returns"
+                            class="btn-link"
+                        />
                     </group>
                     <group string="Health">
                         <field name="failed_jobs" />
+                        <button
+                            name="action_open_failed_jobs"
+                            type="object"
+                            string="View Failed Jobs"
+                            class="btn-link"
+                        />
                         <field name="last_order_sync" />
                         <field name="last_price_sync" />
                         <field name="last_fba_sync" />

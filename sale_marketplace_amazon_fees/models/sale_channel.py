@@ -27,11 +27,12 @@ class SaleChannel(models.Model):
         if result.get("Status") != "Success":
             return None
         estimate = result.get("FeesEstimate", {})
-        basis = (
+        basis = float(
             estimate.get("FeesEstimateIdentifier", {})
             .get("PriceToEstimateFees", {})
             .get("ListingPrice", {})
             .get("Amount", 0.0)
+            or 0.0
         )
         vals = {
             "referral_fee": 0.0,
@@ -41,7 +42,7 @@ class SaleChannel(models.Model):
             "fee_basis_price": basis,
         }
         for detail in estimate.get("FeeDetailList", []):
-            amount = detail.get("FeeAmount", {}).get("Amount", 0.0)
+            amount = float(detail.get("FeeAmount", {}).get("Amount", 0.0) or 0.0)
             fee_type = detail.get("FeeType")
             if fee_type == "ReferralFee":
                 vals["referral_fee"] += amount

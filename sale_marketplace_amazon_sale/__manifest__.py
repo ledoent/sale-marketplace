@@ -13,6 +13,7 @@
         "sale_marketplace_import",
         "sale_stock",
         "account",
+        "queue_job",
     ],
     "external_dependencies": {
         "python": ["python-amazon-sp-api"],

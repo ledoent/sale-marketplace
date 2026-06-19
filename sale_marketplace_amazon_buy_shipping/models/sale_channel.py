@@ -98,5 +98,9 @@ class SaleChannel(models.Model):
             "cost": payload.get("ShippingService", {})
             .get("Rate", {})
             .get("Amount", 0.0),
+            "currency": payload.get("ShippingService", {})
+            .get("Rate", {})
+            .get("CurrencyCode")
+            or "USD",
             "label_contents": label.get("Contents"),
         }

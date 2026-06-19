@@ -223,3 +223,16 @@ class TestPayment(AccountTestInvoicingCommon):
         with patch(f"{_API_PATH}._amazon_get_api", return_value=api):
             with self.assertRaises(ValueError):
                 self.channel._amazon_pull_settlements()
+
+    def test_fee_posts_to_fee_account_not_income(self):
+        # referral fee (-15) must land on the expense account, never on income
+        self._run()
+        move = self._group().account_move_id
+        fee_acct = self.company_data["default_account_expense"]
+        income_acct = self.company_data["default_account_revenue"]
+        fee_lines = move.line_ids.filtered(lambda line: line.account_id == fee_acct)
+        income_lines = move.line_ids.filtered(
+            lambda line: line.account_id == income_acct
+        )
+        self.assertAlmostEqual(sum(fee_lines.mapped("debit")), 15.0)
+        self.assertAlmostEqual(sum(income_lines.mapped("credit")), 108.0)

@@ -27,7 +27,7 @@ class StockPicking(models.Model):
         """
         self.ensure_one()
         fba_model = self.env["sale.channel.fba.inventory"]
-        channel = self.env["sale.channel"]
+        channels = self.env["sale.channel"]
         lines = {}
         for move in self.move_ids:
             fba = fba_model.search([("product_id", "=", move.product_id.id)], limit=1)
@@ -36,13 +36,21 @@ class StockPicking(models.Model):
                     _("No Amazon FBA SKU found for product %s.")
                     % move.product_id.display_name
                 )
-            channel = fba.sale_channel_id
+            channels |= fba.sale_channel_id
             entry = lines.setdefault(
                 fba.seller_sku, {"product": move.product_id, "qty": 0.0}
             )
             entry["qty"] += move.product_uom_qty
-        if not lines or not channel:
+        if not lines or not channels:
             raise UserError(_("Nothing to fulfill via Amazon MCF."))
+        if len(channels) > 1:
+            raise UserError(
+                _(
+                    "This delivery mixes products from multiple Amazon channels; "
+                    "split it to fulfill via MCF."
+                )
+            )
+        channel = channels
         reference = self.sale_id.name or self.name
         order = self.env["sale.channel.fulfillment.order"].create(
             {

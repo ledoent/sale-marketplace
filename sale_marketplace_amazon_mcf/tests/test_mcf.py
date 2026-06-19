@@ -181,3 +181,31 @@ class TestMcf(TransactionCase):
             self.env["sale.channel.fulfillment.order"]._cron_amazon_sync_mcf_status()
         completed = (order1 | order2).filtered(lambda o: o.state == "complete")
         self.assertEqual(len(completed), 1)  # one failed, one succeeded
+
+    def test_fulfill_multi_channel_raises(self):
+        # a picking whose products map to FBA on two different channels must error
+        other = self.env["sale.channel"].create(
+            {
+                "name": "Amazon 2",
+                "channel_type": "amazon",
+                "warehouse_id": self.warehouse.id,
+            }
+        )
+        p2 = self.env["product.product"].create(
+            {"name": "Widget2", "default_code": "SKU-2", "is_storable": True}
+        )
+        self.env["sale.channel.fba.inventory"].create(
+            {"sale_channel_id": other.id, "seller_sku": "SKU-2", "product_id": p2.id}
+        )
+        order = self.env["sale.order"].create(
+            {
+                "partner_id": self.customer.id,
+                "order_line": [
+                    (0, 0, {"product_id": self.product.id, "product_uom_qty": 1}),
+                    (0, 0, {"product_id": p2.id, "product_uom_qty": 1}),
+                ],
+            }
+        )
+        order.action_confirm()
+        with self.assertRaises(UserError):
+            order.picking_ids[:1].action_amz_mcf_fulfill()

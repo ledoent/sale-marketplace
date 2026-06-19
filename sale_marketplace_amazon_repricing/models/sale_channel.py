@@ -121,8 +121,14 @@ class SaleChannel(models.Model):
             return
         buy_box = next((o for o in offers if o.get("IsBuyBoxWinner")), None)
         if buy_box:
-            binding.buy_box_price = buy_box.get("ListingPrice", {}).get("Amount", 0.0)
+            binding.buy_box_price = float(
+                buy_box.get("ListingPrice", {}).get("Amount", 0.0) or 0.0
+            )
             binding.buy_box_winner = buy_box.get("SellerId") == self.amazon_seller_id
+        else:
+            # no buy-box winner in this notification (e.g. suppressed buy box):
+            # clear the flag so a listing that lost the box doesn't stay "winning".
+            binding.buy_box_winner = False
         self._amazon_snapshot_offers(binding, offers)
         if self.price_push_enabled:
             self._amazon_reprice_listing(binding)

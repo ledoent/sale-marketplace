@@ -38,7 +38,8 @@ class SaleChannel(models.Model):
     # ------------------------------------------------------------------
     @staticmethod
     def _amazon_money(node):
-        return (node or {}).get("CurrencyAmount", 0.0)
+        # SP-API delivers CurrencyAmount as a number or a string; coerce.
+        return float((node or {}).get("CurrencyAmount", 0.0) or 0.0)
 
     @api.model
     def _amazon_settlement_dt(self, value):
@@ -146,19 +147,23 @@ class SaleChannel(models.Model):
     # GL entry
     # ------------------------------------------------------------------
     def _amazon_settlement_account(self, event_type):
+        # Revenue-side types fall back to income; expense-side types fall back to
+        # the fee account -- never route a fee to income (that would corrupt P&L).
+        income = self.amazon_income_account_id
+        fee = self.amazon_fee_account_id
         mapping = {
-            "shipment": self.amazon_income_account_id,
-            "refund": self.amazon_income_account_id,
-            "tax": self.amazon_tax_account_id,
-            "shipping": self.amazon_shipping_account_id,
-            "referral_fee": self.amazon_fee_account_id,
-            "fba_fee": self.amazon_fee_account_id,
-            "service_fee": self.amazon_fee_account_id,
-            "advertising": self.amazon_advertising_account_id,
-            "promotion": self.amazon_promotion_account_id,
-            "other": self.amazon_fee_account_id,
+            "shipment": income,
+            "refund": income,
+            "tax": self.amazon_tax_account_id or income,
+            "shipping": self.amazon_shipping_account_id or income,
+            "referral_fee": fee,
+            "fba_fee": fee,
+            "service_fee": fee,
+            "advertising": self.amazon_advertising_account_id or fee,
+            "promotion": self.amazon_promotion_account_id or fee,
+            "other": fee,
         }
-        return mapping.get(event_type) or self.amazon_income_account_id
+        return mapping.get(event_type) or fee or income
 
     def _amazon_create_settlement_entry(self, group):
         """Create a balanced journal entry from the group's financial events."""
@@ -170,7 +175,11 @@ class SaleChannel(models.Model):
                 self.display_name,
             )
             return self.env["account.move"]
-        currency = group.currency_id or self.company_id.currency_id
+        currency = (
+            group.currency_id
+            or self.company_id.currency_id
+            or self.env.company.currency_id
+        )
         totals = {}
         for event in group.financial_event_ids:
             account = self._amazon_settlement_account(event.event_type)
@@ -261,7 +270,11 @@ class SaleChannel(models.Model):
     def _amazon_reconcile_settlement(self, group):
         """Match settled principal per order to its posted customer invoice."""
         self.ensure_one()
-        currency = group.currency_id or self.company_id.currency_id
+        currency = (
+            group.currency_id
+            or self.company_id.currency_id
+            or self.env.company.currency_id
+        )
         group.reconciliation_ids.unlink()
         order_ids = {
             event.amazon_order_id
@@ -391,8 +404,15 @@ class SaleChannel(models.Model):
             for group_data in payload.get("FinancialEventGroupList", []):
                 if group_data.get("ProcessingStatus") != "Closed":
                     continue
-                self._amazon_process_settlement_group(group_data)
-                processed += 1
+                try:
+                    self._amazon_process_settlement_group(group_data)
+                    processed += 1
+                except Exception as exc:  # isolate one bad group from the batch
+                    _logger.warning(
+                        "Amazon settlement group %s failed: %s",
+                        group_data.get("FinancialEventGroupId"),
+                        exc,
+                    )
             next_token = payload.get("NextToken")
             if not next_token:
                 break

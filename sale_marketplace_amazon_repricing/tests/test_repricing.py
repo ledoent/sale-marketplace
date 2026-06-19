@@ -178,3 +178,18 @@ class TestRepricing(TransactionCase):
             self.channel.action_amazon_setup_notifications()
         self.assertTrue(self.channel.notifications_enabled)
         self.assertTrue(api.create_subscription.called)
+
+    def test_process_no_winner_resets_buy_box(self):
+        # we were winning; a notification with no buy-box winner must clear it
+        self.binding.buy_box_winner = True
+        notif = _notif(
+            offers=[
+                {
+                    "SellerId": "X",
+                    "IsBuyBoxWinner": False,
+                    "ListingPrice": {"Amount": 9},
+                }
+            ]
+        )
+        self.channel._amazon_process_offer_notification(notif)
+        self.assertFalse(self.binding.buy_box_winner)
