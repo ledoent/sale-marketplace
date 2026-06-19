@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_scp_price_history_user,sale.channel.product.price.history user,model_sale_channel_product_price_history,base.group_user,1,0,0,0
+access_scp_price_history_manager,sale.channel.product.price.history manager,model_sale_channel_product_price_history,sales_team.group_sale_manager,1,1,1,1
