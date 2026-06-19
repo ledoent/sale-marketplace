@@ -23,6 +23,9 @@ class TestDashboard(TransactionCase):
         product = cls.env["product.product"].create(
             {"name": "Widget", "default_code": "SKU-1"}
         )
+        product2 = cls.env["product.product"].create(
+            {"name": "Widget 2", "default_code": "SKU-2"}
+        )
         Binding = cls.env["sale.channel.product"]
         cls.winner = Binding.create(
             {
@@ -36,7 +39,7 @@ class TestDashboard(TransactionCase):
         Binding.create(
             {
                 "sale_channel_id": cls.channel.id,
-                "product_id": product.copy().id,
+                "product_id": product2.id,
                 "external_id": "SKU-2",
                 "buy_box_price": 15.0,
                 "buy_box_winner": False,
