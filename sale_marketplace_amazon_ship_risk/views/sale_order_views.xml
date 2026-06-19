@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="sale_order_view_form" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <field name="client_order_ref" position="after">
+                <field
+                    name="amazon_ship_risk"
+                    invisible="amazon_ship_risk == 'none'"
+                    decoration-danger="amazon_ship_risk in ('overdue', 'blocked')"
+                    decoration-warning="amazon_ship_risk == 'at_risk'"
+                    widget="badge"
+                />
+                <field
+                    name="amazon_latest_ship_date"
+                    invisible="amazon_ship_risk == 'none'"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>
