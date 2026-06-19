@@ -10,7 +10,7 @@
     "license": "AGPL-3",
     "depends": [
         "sale_marketplace_amazon",
-        "sale_import_base",
+        "sale_marketplace_import",
         "sale_stock",
         "account",
     ],

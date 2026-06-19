@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import datetime
-import json
 import logging
 
 from odoo import api, fields, models
@@ -123,16 +122,10 @@ class SaleChannel(models.Model):
         data = self._amazon_order_to_payload(
             amazon_order_id, order_items, address_res.payload
         )
-        # Creating the payload enqueues its own processing job
-        # (sale.import.payload.create -> enqueue_job), so we do not call
-        # process() here to avoid importing the order twice.
-        return self.env["sale.import.payload"].create(
-            {
-                "data_str": json.dumps(data),
-                "sale_channel_id": self.id,
-                "company_id": self.company_id.id,
-            }
-        )
+        # _create_import_payload (sale_marketplace_import) enqueues its own
+        # processing job (sale.import.payload.create -> enqueue_job), so we do
+        # not call process() here to avoid importing the order twice.
+        return self._create_import_payload(data)
 
     def _amazon_order_to_payload(self, amazon_order_id, order_items, address_payload):
         """Map Amazon order data to the sale_import_base SaleOrder schema dict."""
