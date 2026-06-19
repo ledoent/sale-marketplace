@@ -121,9 +121,11 @@ class TestFees(TransactionCase):
         )
 
     def test_fee_aware_floor_denom_guard_falls_back(self):
-        # referral 96% of price -> denom <= 0 -> fall back to cost+margin floor (11)
+        # referral 96% of price -> denom <= 0 -> fall back to base floor 10/(1-0.10)
         self.binding.write({"fee_basis_price": 25.0, "referral_fee": 24.0})
-        self.assertAlmostEqual(self.channel._amazon_price_floor(self.binding), 11.0)
+        self.assertAlmostEqual(
+            self.channel._amazon_price_floor(self.binding), 10.0 / 0.9, places=4
+        )
 
     # ---- cron + error isolation ----
     def test_cron_syncs_fees(self):

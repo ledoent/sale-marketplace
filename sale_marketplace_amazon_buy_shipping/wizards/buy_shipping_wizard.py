@@ -16,7 +16,9 @@ class BuyShippingWizard(models.TransientModel):
     sale_channel_id = fields.Many2one(
         "sale.channel", compute="_compute_sale_channel_id"
     )
-    weight = fields.Float(default=1.0, help="Package weight in ounces.")
+    weight = fields.Float(
+        default=1.0, help="Package weight in the system weight unit (kg by default)."
+    )
     rate_line_ids = fields.One2many(
         "sale.channel.buy.shipping.rate", "wizard_id", string="Rates"
     )

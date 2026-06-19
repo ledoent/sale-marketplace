@@ -36,8 +36,8 @@ class SaleChannel(models.Model):
     competitive_floor_margin_pct = fields.Float(
         "Floor Margin %",
         default=10.0,
-        help="Minimum margin over product cost; every computed price is clamped "
-        "to this cost-plus-margin floor.",
+        help="Minimum net margin as a percent of price (margin-on-revenue); every "
+        "computed price is clamped to the floor that clears this margin.",
     )
     price_push_enabled = fields.Boolean(default=False)
     last_price_sync_date = fields.Datetime(readonly=True)
@@ -46,12 +46,19 @@ class SaleChannel(models.Model):
     # Price computation
     # ------------------------------------------------------------------
     def _amazon_price_floor(self, binding):
-        """Cost-plus-margin floor for a binding (0.0 when cost is unknown)."""
+        """Price floor that clears the target NET margin (margin-on-revenue).
+
+        Returns the price at which (price - cost) / price equals the configured
+        floor margin. 0.0 when cost is unknown or the target margin is >= 100%
+        (unachievable). The fees module extends this with a fee-aware floor that
+        uses the same margin-on-revenue convention.
+        """
         self.ensure_one()
         cost = binding.product_id.standard_price or 0.0
-        if not cost:
+        margin = self.competitive_floor_margin_pct / 100.0
+        if not cost or margin >= 1.0:
             return 0.0
-        return cost * (1.0 + self.competitive_floor_margin_pct / 100.0)
+        return cost / (1.0 - margin)
 
     def _amazon_compute_competitive_price(self, binding):
         """Target price for the competitive pricing mode, clamped to the floor."""

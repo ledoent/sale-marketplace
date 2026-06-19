@@ -207,16 +207,19 @@ class SaleChannel(models.Model):
         order = ret.order_id
         if not order:
             return False
-        invoice = order.invoice_ids.filtered(
+        invoices = order.invoice_ids.filtered(
             lambda m: m.move_type == "out_invoice" and m.state == "posted"
-        )[:1]
-        if not invoice:
+        )
+        if not invoices:
             return False
+        # match return lines against ALL posted invoices of the order (orders can
+        # be invoiced across several invoices), and carry the original discount.
+        invoice_lines = invoices.invoice_line_ids
         cn_lines = []
         for line in ret.line_ids:
             if not line.product_id or line.quantity <= 0:
                 continue
-            inv_line = invoice.invoice_line_ids.filtered(
+            inv_line = invoice_lines.filtered(
                 lambda il, line=line: il.product_id == line.product_id
             )[:1]
             if not inv_line:
@@ -229,6 +232,7 @@ class SaleChannel(models.Model):
                         "product_id": line.product_id.id,
                         "quantity": line.quantity,
                         "price_unit": inv_line.price_unit,
+                        "discount": inv_line.discount,
                         "tax_ids": [(6, 0, inv_line.tax_ids.ids)],
                     },
                 )
@@ -238,7 +242,7 @@ class SaleChannel(models.Model):
         credit_note = self.env["account.move"].create(
             {
                 "move_type": "out_refund",
-                "partner_id": invoice.partner_id.id,
+                "partner_id": invoices[0].partner_id.id,
                 "invoice_origin": ret.rma_id,
                 "invoice_line_ids": cn_lines,
             }

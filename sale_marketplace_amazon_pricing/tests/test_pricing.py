@@ -76,7 +76,8 @@ class TestPricing(TransactionCase):
         )
 
     def test_compute_floor_cost_plus_uses_cost_not_buy_box(self):
-        # cost 10 + 20% margin = 12; the buy box (20) must be ignored.
+        # margin-on-revenue: cost 10 at a 20% net margin -> 10/(1-0.20) = 12.5;
+        # the buy box (20) must be ignored.
         self.channel.write(
             {
                 "competitive_rule": "floor_cost_plus",
@@ -85,17 +86,19 @@ class TestPricing(TransactionCase):
         )
         self.binding.buy_box_price = 20.0
         self.assertAlmostEqual(
-            self.channel._amazon_compute_competitive_price(self.binding), 12.0
+            self.channel._amazon_compute_competitive_price(self.binding), 12.5
         )
 
     def test_compute_clamps_to_floor(self):
-        # undercut would drop below the cost+margin floor (11); clamp to 11.
+        # undercut would drop below the floor; clamp to 10/(1-0.10) = 11.111.
         self.channel.write(
             {"competitive_rule": "undercut", "competitive_undercut_pct": 50.0}
         )
         self.binding.buy_box_price = 10.0
         self.assertAlmostEqual(
-            self.channel._amazon_compute_competitive_price(self.binding), 11.0
+            self.channel._amazon_compute_competitive_price(self.binding),
+            10.0 / 0.9,
+            places=4,
         )
 
     # ---- price push + history ----

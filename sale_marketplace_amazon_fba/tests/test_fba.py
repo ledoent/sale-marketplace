@@ -117,7 +117,9 @@ class TestFba(TransactionCase):
             payload=_payload([_summary(fulfillable=8)])
         )
         with patch(f"{_API_PATH}._amazon_get_api", return_value=api):
-            self.env["sale.channel"]._cron_amazon_sync_fba_inventory()
+            self.env["sale.channel"].with_context(
+                test_queue_job_no_delay=True
+            )._cron_amazon_sync_fba_inventory()
         self.assertEqual(self._record().fulfillable_qty, 8)
 
     @mute_logger(_MODEL_PATH)

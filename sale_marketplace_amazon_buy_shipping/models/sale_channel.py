@@ -36,7 +36,9 @@ class SaleChannel(models.Model):
             "ShipFromAddress": self._amazon_address(ship_from),
             "ShipToAddress": self._amazon_address(picking.partner_id),
             "PackageDimensions": {"PredefinedPackageDimensions": "FedEx_Box_10kg"},
-            "Weight": {"Value": weight or 1.0, "Unit": "oz"},
+            # weight arrives in the system weight UoM (kg in Odoo's default metric
+            # config); send it to Amazon in grams rather than mislabelling kg as oz.
+            "Weight": {"Value": (weight or 0.1) * 1000.0, "Unit": "g"},
             "ShippingServiceOptions": {
                 "DeliveryExperience": "DeliveryConfirmationWithoutSignature",
                 "CarrierWillPickUp": False,

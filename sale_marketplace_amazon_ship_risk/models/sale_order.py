@@ -87,5 +87,7 @@ class SaleOrder(models.Model):
         for order in orders:
             channel = order.sale_channel_id
             if channel and not order.amazon_latest_ship_date:
-                channel._amazon_capture_ship_dates(order)
-            order._amazon_update_ship_risk()
+                # defer the GetOrder call (capture recomputes risk at the end)
+                channel.with_delay()._amazon_capture_ship_dates(order)
+            else:
+                order._amazon_update_ship_risk()

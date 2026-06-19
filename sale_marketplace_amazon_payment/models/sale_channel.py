@@ -428,4 +428,4 @@ class SaleChannel(models.Model):
     def _cron_amazon_sync_settlements(self):
         channels = self.search([("channel_type", "=", "amazon")])
         for channel in channels:
-            channel._amazon_pull_settlements()
+            channel.with_delay()._amazon_pull_settlements()

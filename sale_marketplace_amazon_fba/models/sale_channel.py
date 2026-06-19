@@ -114,6 +114,8 @@ class SaleChannel(models.Model):
 
     @api.model
     def _cron_amazon_sync_fba_inventory(self):
-        channels = self.search([("channel_type", "=", "amazon")])
+        channels = self.search(
+            [("channel_type", "=", "amazon"), ("amazon_marketplace_id", "!=", False)]
+        )
         for channel in channels:
-            channel._amazon_sync_fba_inventory()
+            channel.with_delay()._amazon_sync_fba_inventory()
