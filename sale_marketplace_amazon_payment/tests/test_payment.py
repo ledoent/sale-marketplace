@@ -7,6 +7,7 @@ from odoo.tests import tagged
 from odoo.tools import mute_logger
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
+from odoo.addons.queue_job.tests.common import trap_jobs
 
 _API_PATH = "odoo.addons.sale_marketplace_amazon.models.sale_channel.SaleChannel"
 _MODEL_PATH = "odoo.addons.sale_marketplace_amazon_payment.models.sale_channel"
@@ -212,8 +213,12 @@ class TestPayment(AccountTestInvoicingCommon):
         api = MagicMock()
         api.list_financial_event_groups.return_value.payload = _groups()
         api.list_financial_events_by_group_id.return_value.payload = _events()
-        with patch(f"{_API_PATH}._amazon_get_api", return_value=api):
+        with (
+            trap_jobs() as trap,
+            patch(f"{_API_PATH}._amazon_get_api", return_value=api),
+        ):
             self.env["sale.channel"]._cron_amazon_sync_settlements()
+            trap.perform_enqueued_jobs()
         self.assertTrue(self._group())
 
     @mute_logger(_MODEL_PATH)

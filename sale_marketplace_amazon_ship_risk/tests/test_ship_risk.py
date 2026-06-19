@@ -8,6 +8,8 @@ from odoo import fields
 from odoo.tests.common import TransactionCase
 from odoo.tools import mute_logger
 
+from odoo.addons.queue_job.tests.common import trap_jobs
+
 _API_PATH = "odoo.addons.sale_marketplace_amazon.models.sale_channel.SaleChannel"
 _MODEL_PATH = "odoo.addons.sale_marketplace_amazon_ship_risk.models.sale_channel"
 
@@ -144,8 +146,12 @@ class TestShipRisk(TransactionCase):
             "LatestShipDate": latest,
             "FulfillmentChannel": "MFN",
         }
-        with patch(f"{_API_PATH}._amazon_get_api", return_value=api):
+        with (
+            trap_jobs() as trap,
+            patch(f"{_API_PATH}._amazon_get_api", return_value=api),
+        ):
             self.env["sale.order"]._cron_amazon_update_ship_risk()
+            trap.perform_enqueued_jobs()
         self.assertEqual(self.order.amazon_ship_risk, "on_track")
 
     @mute_logger(_MODEL_PATH)

@@ -6,6 +6,8 @@ from unittest.mock import MagicMock, patch
 from odoo.tests.common import TransactionCase
 from odoo.tools import mute_logger
 
+from odoo.addons.queue_job.tests.common import trap_jobs
+
 _API_PATH = "odoo.addons.sale_marketplace_amazon.models.sale_channel.SaleChannel"
 _MODEL_PATH = "odoo.addons.sale_marketplace_amazon_fba.models.sale_channel"
 
@@ -116,8 +118,12 @@ class TestFba(TransactionCase):
         api.get_inventory_summary_marketplace.return_value = MagicMock(
             payload=_payload([_summary(fulfillable=8)])
         )
-        with patch(f"{_API_PATH}._amazon_get_api", return_value=api):
+        with (
+            trap_jobs() as trap,
+            patch(f"{_API_PATH}._amazon_get_api", return_value=api),
+        ):
             self.env["sale.channel"]._cron_amazon_sync_fba_inventory()
+            trap.perform_enqueued_jobs()
         self.assertEqual(self._record().fulfillable_qty, 8)
 
     @mute_logger(_MODEL_PATH)

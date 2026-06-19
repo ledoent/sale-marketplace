@@ -11,6 +11,7 @@
     "depends": [
         "sale_marketplace_amazon_sale",
         "sale_marketplace_amazon_stock",
+        "queue_job",
     ],
     "external_dependencies": {
         "python": ["python-amazon-sp-api"],
