@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="sale_channel_settlement_group_view_tree" model="ir.ui.view">
+        <field name="model">sale.channel.settlement.group</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="fund_transfer_date" />
+                <field name="sale_channel_id" />
+                <field name="amazon_group_id" />
+                <field name="processing_status" />
+                <field name="original_total" />
+                <field name="account_move_id" />
+            </list>
+        </field>
+    </record>
+
+    <record id="sale_channel_settlement_group_view_form" model="ir.ui.view">
+        <field name="model">sale.channel.settlement.group</field>
+        <field name="arch" type="xml">
+            <form string="Settlement Group">
+                <sheet>
+                    <group>
+                        <field name="sale_channel_id" />
+                        <field name="amazon_group_id" />
+                        <field name="processing_status" />
+                        <field name="fund_transfer_date" />
+                        <field name="original_total" />
+                        <field name="currency_id" />
+                        <field name="account_move_id" />
+                    </group>
+                    <notebook>
+                        <page string="Financial Events">
+                            <field name="financial_event_ids">
+                                <list>
+                                    <field name="event_type" />
+                                    <field name="amazon_order_id" />
+                                    <field name="amount" />
+                                    <field name="description" />
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Reconciliation">
+                            <field name="reconciliation_ids">
+                                <list>
+                                    <field name="amazon_order_id" />
+                                    <field name="order_id" />
+                                    <field name="invoice_id" />
+                                    <field name="settled_principal" />
+                                    <field name="invoiced_total" />
+                                    <field name="variance" />
+                                    <field name="state" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_channel_settlement_group_action" model="ir.actions.act_window">
+        <field name="name">Amazon Settlements</field>
+        <field name="res_model">sale.channel.settlement.group</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

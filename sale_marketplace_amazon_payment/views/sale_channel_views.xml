@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="sale_channel_view_form" model="ir.ui.view">
+        <field name="model">sale.channel</field>
+        <field name="inherit_id" ref="sale_marketplace_amazon.sale_channel_view_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//button[@name='action_amazon_test_connection']"
+                position="after"
+            >
+                <button
+                    name="action_amazon_sync_settlements"
+                    type="object"
+                    string="Sync Settlements"
+                    class="btn-secondary"
+                    invisible="channel_type != 'amazon'"
+                />
+            </xpath>
+            <group name="amazon_config" position="after">
+                <group
+                    name="amazon_settlement"
+                    string="Settlements"
+                    invisible="channel_type != 'amazon'"
+                >
+                    <field name="amazon_settlement_journal_id" />
+                    <field name="amazon_income_account_id" />
+                    <field name="amazon_fee_account_id" />
+                    <field name="amazon_advertising_account_id" />
+                    <field name="amazon_tax_account_id" />
+                    <field name="amazon_shipping_account_id" />
+                    <field name="amazon_promotion_account_id" />
+                    <field name="last_settlement_sync_date" />
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>
