@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_scs_user,sale.channel.shipment user,model_sale_channel_shipment,base.group_user,1,0,0,0
+access_scs_manager,sale.channel.shipment manager,model_sale_channel_shipment,sales_team.group_sale_manager,1,1,1,1
+access_scbsw_user,buy shipping wizard,model_sale_channel_buy_shipping_wizard,base.group_user,1,1,1,1
+access_scbsr_user,buy shipping rate,model_sale_channel_buy_shipping_rate,base.group_user,1,1,1,1

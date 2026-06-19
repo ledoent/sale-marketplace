@@ -1,0 +1,53 @@
+# Manual-only live Amazon SP-API *sandbox* smoke test.
+#
+# Runs sale_marketplace_amazon_sale's @tagged("amazon_sandbox") test against the
+# real SP-API sandbox using repository secrets. It is `workflow_dispatch` ONLY:
+# it never runs on pull_request, so fork PRs can never read the credentials
+# (GitHub does not expose secrets to fork-PR runs anyway). Maintainer-triggered.
+#
+# Required repository secrets (Settings -> Secrets and variables -> Actions):
+#   AMAZON_SP_API_CLIENT_ID, AMAZON_SP_API_CLIENT_SECRET,
+#   AMAZON_SP_API_REFRESH_TOKEN, AMAZON_SP_API_MARKETPLACE_ID,
+#   AMAZON_SP_API_SANDBOX_ORDER_ID
+#
+# Do NOT add pull_request / push triggers here, and never echo these values.
+name: amazon-sandbox-smoke
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sandbox-smoke:
+    runs-on: ubuntu-22.04
+    container: ghcr.io/oca/oca-ci/py3.10-odoo18.0:latest
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_USER: odoo
+          POSTGRES_PASSWORD: odoo
+          POSTGRES_DB: odoo
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install addons and dependencies
+        run: oca_install_addons
+      - name: Install Amazon SP-API client
+        run: pip install python-amazon-sp-api
+      - name: Initialize test db
+        run: oca_init_test_database
+      - name: Run Amazon sandbox smoke test
+        env:
+          AMAZON_SP_API_CLIENT_ID: ${{ secrets.AMAZON_SP_API_CLIENT_ID }}
+          AMAZON_SP_API_CLIENT_SECRET: ${{ secrets.AMAZON_SP_API_CLIENT_SECRET }}
+          AMAZON_SP_API_REFRESH_TOKEN: ${{ secrets.AMAZON_SP_API_REFRESH_TOKEN }}
+          AMAZON_SP_API_MARKETPLACE_ID: ${{ secrets.AMAZON_SP_API_MARKETPLACE_ID }}
+          AMAZON_SP_API_SANDBOX_ORDER_ID: ${{ secrets.AMAZON_SP_API_SANDBOX_ORDER_ID }}
+        run: |
+          odoo -u sale_marketplace_amazon_sale \
+               --test-enable --test-tags amazon_sandbox \
+               --stop-after-init --log-level=test \
+               -d "${PGDATABASE:-odoo}"

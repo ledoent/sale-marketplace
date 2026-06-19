@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="buy_shipping_wizard_view_form" model="ir.ui.view">
+        <field name="model">sale.channel.buy.shipping.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Buy Amazon Shipping">
+                <group>
+                    <field name="picking_id" readonly="1" />
+                    <field name="sale_channel_id" readonly="1" />
+                    <field name="weight" />
+                </group>
+                <button
+                    name="action_get_rates"
+                    type="object"
+                    string="Get Rates"
+                    class="btn-primary"
+                />
+                <field name="rate_line_ids" readonly="1">
+                    <list>
+                        <field name="carrier_name" />
+                        <field name="service_name" />
+                        <field name="amount" />
+                        <field name="currency" />
+                        <button
+                            name="action_buy"
+                            type="object"
+                            string="Buy"
+                            class="btn-primary"
+                        />
+                    </list>
+                </field>
+                <footer>
+                    <button string="Close" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
