@@ -428,4 +428,11 @@ class SaleChannel(models.Model):
     def _cron_amazon_sync_settlements(self):
         channels = self.search([("channel_type", "=", "amazon")])
         for channel in channels:
-            channel.with_delay()._amazon_pull_settlements()
+            try:
+                channel._amazon_pull_settlements()
+            except Exception as exc:  # isolate one channel from the batch
+                _logger.warning(
+                    "Amazon settlement sync failed for %s: %s",
+                    channel.display_name,
+                    exc,
+                )

@@ -118,4 +118,9 @@ class SaleChannel(models.Model):
             [("channel_type", "=", "amazon"), ("amazon_marketplace_id", "!=", False)]
         )
         for channel in channels:
-            channel.with_delay()._amazon_sync_fba_inventory()
+            try:
+                channel._amazon_sync_fba_inventory()
+            except Exception as exc:  # isolate one channel from the batch
+                _logger.warning(
+                    "Amazon FBA sync failed for %s: %s", channel.display_name, exc
+                )

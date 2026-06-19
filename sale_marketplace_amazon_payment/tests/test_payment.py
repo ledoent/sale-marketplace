@@ -80,7 +80,6 @@ class TestPayment(AccountTestInvoicingCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.env = cls.env(context=dict(cls.env.context, test_queue_job_no_delay=True))
         revenue = cls.company_data["default_account_revenue"]
         expense = cls.company_data["default_account_expense"]
         cls.channel = cls.env["sale.channel"].create(

@@ -16,7 +16,6 @@ class TestShipRisk(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.env = cls.env(context=dict(cls.env.context, test_queue_job_no_delay=True))
         cls.warehouse = cls.env["stock.warehouse"].search([], limit=1)
         cls.channel = cls.env["sale.channel"].create(
             {
