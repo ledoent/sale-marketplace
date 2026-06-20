@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_scwr_user,walmart return user,model_sale_channel_walmart_return,base.group_user,1,0,0,0
+access_scwr_manager,walmart return manager,model_sale_channel_walmart_return,sales_team.group_sale_manager,1,1,1,1
+access_scwrl_user,walmart return line user,model_sale_channel_walmart_return_line,base.group_user,1,0,0,0
+access_scwrl_manager,walmart return line manager,model_sale_channel_walmart_return_line,sales_team.group_sale_manager,1,1,1,1
