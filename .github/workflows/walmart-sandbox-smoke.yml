@@ -1,0 +1,49 @@
+# Manual-only live Walmart Marketplace *sandbox* smoke test.
+#
+# Runs sale_marketplace_walmart's @tagged("walmart_sandbox") test against the
+# real Walmart sandbox (sandbox.walmartapis.com) using repository secrets. It is
+# `workflow_dispatch` ONLY: it never runs on pull_request, so fork PRs can never
+# read the credentials (GitHub does not expose secrets to fork-PR runs anyway).
+# Maintainer-triggered.
+#
+# Required repository secrets (Settings -> Secrets and variables -> Actions):
+#   WALMART_CLIENT_ID, WALMART_CLIENT_SECRET
+#
+# Get sandbox credentials from the Walmart Developer Portal / Seller Center
+# (API Key Management -> Sandbox keys). Do NOT add pull_request / push triggers
+# here, and never echo these values.
+name: walmart-sandbox-smoke
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sandbox-smoke:
+    runs-on: ubuntu-22.04
+    container: ghcr.io/oca/oca-ci/py3.10-odoo18.0:latest
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_USER: odoo
+          POSTGRES_PASSWORD: odoo
+          POSTGRES_DB: odoo
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install addons and dependencies
+        run: oca_install_addons
+      - name: Initialize test db
+        run: oca_init_test_database
+      - name: Run Walmart sandbox smoke test
+        env:
+          WALMART_CLIENT_ID: ${{ secrets.WALMART_CLIENT_ID }}
+          WALMART_CLIENT_SECRET: ${{ secrets.WALMART_CLIENT_SECRET }}
+        run: |
+          odoo -u sale_marketplace_walmart \
+               --test-enable --test-tags walmart_sandbox \
+               --stop-after-init --log-level=test \
+               -d "${PGDATABASE:-odoo}"

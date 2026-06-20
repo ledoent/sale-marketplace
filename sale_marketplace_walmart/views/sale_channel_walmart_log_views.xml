@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="walmart_log_view_tree" model="ir.ui.view">
+        <field name="model">sale.channel.walmart.log</field>
+        <field name="arch" type="xml">
+            <list
+                decoration-warning="level == 'warning'"
+                decoration-danger="level == 'error'"
+            >
+                <field name="date" />
+                <field name="sale_channel_id" />
+                <field name="operation" />
+                <field name="level" />
+                <field name="reference" optional="show" />
+                <field name="message" />
+            </list>
+        </field>
+    </record>
+
+    <record id="walmart_log_view_search" model="ir.ui.view">
+        <field name="model">sale.channel.walmart.log</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="sale_channel_id" />
+                <field name="operation" />
+                <field name="reference" />
+                <filter
+                    name="warnings"
+                    string="Warnings"
+                    domain="[('level','=','warning')]"
+                />
+                <filter
+                    name="errors"
+                    string="Errors"
+                    domain="[('level','=','error')]"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        name="group_operation"
+                        string="Operation"
+                        context="{'group_by': 'operation'}"
+                    />
+                    <filter
+                        name="group_level"
+                        string="Level"
+                        context="{'group_by': 'level'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="walmart_log_action" model="ir.actions.act_window">
+        <field name="name">Walmart Logs</field>
+        <field name="res_model">sale.channel.walmart.log</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Parent menu grouping all Walmart views under Sales. Feature modules
+         add their entries (Dashboard, Settlements, Returns, Feeds) here. -->
+    <menuitem
+        id="menu_walmart_root"
+        name="Walmart"
+        parent="sale.sale_menu_root"
+        sequence="90"
+    />
+
+    <menuitem
+        id="menu_walmart_log"
+        name="Logs"
+        parent="menu_walmart_root"
+        action="walmart_log_action"
+        sequence="60"
+    />
+</odoo>
