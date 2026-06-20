@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <button name="action_confirm" position="before">
+                <button
+                    name="action_walmart_acknowledge"
+                    type="object"
+                    string="Acknowledge on Walmart"
+                    invisible="sale_channel_type != 'walmart' or not client_order_ref or walmart_acknowledged"
+                    groups="sales_team.group_sale_salesman"
+                />
+                <button
+                    name="action_walmart_cancel"
+                    type="object"
+                    string="Cancel on Walmart"
+                    invisible="sale_channel_type != 'walmart' or not client_order_ref or walmart_cancelled"
+                    groups="sales_team.group_sale_salesman"
+                />
+            </button>
+            <field name="client_order_ref" position="after">
+                <field
+                    name="walmart_acknowledged"
+                    invisible="sale_channel_type != 'walmart'"
+                />
+                <field
+                    name="walmart_cancelled"
+                    invisible="sale_channel_type != 'walmart'"
+                />
+                <field
+                    name="walmart_collected_tax"
+                    invisible="sale_channel_type != 'walmart'"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>
