@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="sale_channel_view_form" model="ir.ui.view">
+        <field name="model">sale.channel</field>
+        <field
+            name="inherit_id"
+            ref="sale_marketplace_walmart.sale_channel_view_form"
+        />
+        <field name="arch" type="xml">
+            <button name="action_walmart_test_connection" position="after">
+                <button
+                    name="action_walmart_sync_settlements"
+                    type="object"
+                    string="Sync Settlements"
+                    class="btn-secondary"
+                    invisible="channel_type != 'walmart'"
+                />
+            </button>
+            <group name="walmart_config" position="after">
+                <group
+                    name="walmart_settlement"
+                    string="Walmart Settlement Accounts"
+                    invisible="channel_type != 'walmart'"
+                >
+                    <field name="walmart_settlement_journal_id" />
+                    <field name="walmart_income_account_id" />
+                    <field name="walmart_fee_account_id" />
+                    <field name="walmart_tax_account_id" />
+                    <field name="walmart_shipping_account_id" />
+                    <field name="walmart_last_settlement_sync_date" />
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>

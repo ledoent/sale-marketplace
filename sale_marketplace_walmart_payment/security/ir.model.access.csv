@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_scwsg_user,walmart settlement group user,model_sale_channel_walmart_settlement_group,base.group_user,1,0,0,0
+access_scwsg_manager,walmart settlement group manager,model_sale_channel_walmart_settlement_group,sales_team.group_sale_manager,1,1,1,1
+access_scwfe_user,walmart financial event user,model_sale_channel_walmart_financial_event,base.group_user,1,0,0,0
+access_scwfe_manager,walmart financial event manager,model_sale_channel_walmart_financial_event,sales_team.group_sale_manager,1,1,1,1
+access_scwsr_user,walmart settlement reconciliation user,model_sale_channel_walmart_settlement_reconciliation,base.group_user,1,0,0,0
+access_scwsr_manager,walmart settlement reconciliation manager,model_sale_channel_walmart_settlement_reconciliation,sales_team.group_sale_manager,1,1,1,1
