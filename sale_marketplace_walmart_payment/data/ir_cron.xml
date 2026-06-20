@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+    <record id="ir_cron_walmart_sync_settlements" model="ir.cron">
+        <field name="name">Walmart: Sync Settlements</field>
+        <field name="model_id" ref="sale_channel.model_sale_channel" />
+        <field name="state">code</field>
+        <field name="code">model._cron_walmart_sync_settlements()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active" eval="False" />
+    </record>
+</odoo>

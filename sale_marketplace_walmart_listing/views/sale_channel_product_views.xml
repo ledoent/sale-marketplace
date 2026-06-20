@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="sale_channel_product_view_tree" model="ir.ui.view">
+        <field name="model">sale.channel.product</field>
+        <field
+            name="inherit_id"
+            ref="sale_marketplace.sale_channel_product_view_tree"
+        />
+        <field name="arch" type="xml">
+            <field name="external_id" position="after">
+                <field name="wpid" optional="show" />
+                <field name="walmart_publish" optional="show" />
+            </field>
+        </field>
+    </record>
+
+    <record id="sale_channel_product_view_form" model="ir.ui.view">
+        <field name="model">sale.channel.product</field>
+        <field
+            name="inherit_id"
+            ref="sale_marketplace.sale_channel_product_view_form"
+        />
+        <field name="arch" type="xml">
+            <field name="external_id" position="after">
+                <field name="wpid" />
+                <field name="walmart_publish" />
+            </field>
+        </field>
+    </record>
+</odoo>

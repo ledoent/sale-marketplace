@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="sale_channel_view_form" model="ir.ui.view">
+        <field name="model">sale.channel</field>
+        <field
+            name="inherit_id"
+            ref="sale_marketplace_walmart.sale_channel_view_form"
+        />
+        <field name="arch" type="xml">
+            <button name="action_walmart_test_connection" position="after">
+                <button
+                    name="action_walmart_sync_returns"
+                    type="object"
+                    string="Sync Returns"
+                    class="btn-secondary"
+                    invisible="channel_type != 'walmart' or not walmart_returns_enabled"
+                />
+            </button>
+            <group name="walmart_config" position="after">
+                <group
+                    name="walmart_returns"
+                    string="Walmart Returns"
+                    invisible="channel_type != 'walmart'"
+                >
+                    <field name="walmart_returns_enabled" />
+                    <field
+                        name="walmart_auto_return_picking"
+                        invisible="not walmart_returns_enabled"
+                    />
+                    <field
+                        name="walmart_auto_credit_note"
+                        invisible="not walmart_returns_enabled"
+                    />
+                    <field
+                        name="walmart_auto_refund"
+                        invisible="not walmart_returns_enabled"
+                    />
+                    <field name="walmart_last_return_sync_date" />
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>

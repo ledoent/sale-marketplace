@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_picking_form" model="ir.ui.view">
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <button name="button_validate" position="before">
+                <button
+                    name="action_walmart_confirm_shipment"
+                    type="object"
+                    string="Push Tracking to Walmart"
+                    invisible="state != 'done'"
+                    groups="sales_team.group_sale_salesman"
+                />
+                <field name="walmart_tracking_pushed" invisible="1" />
+            </button>
+        </field>
+    </record>
+</odoo>
