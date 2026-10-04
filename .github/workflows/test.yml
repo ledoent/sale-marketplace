@@ -42,7 +42,7 @@ jobs:
             makepot: "true"
     services:
       postgres:
-        image: postgres:13
+        image: postgres:12
         env:
           POSTGRES_USER: odoo
           POSTGRES_PASSWORD: odoo
@@ -65,6 +65,9 @@ jobs:
         run: oca_init_test_database
       - name: Run tests
         run: oca_run_tests
+      - name: Coverage report
+        run: coverage report --skip-empty
+        if: always()
       - name: Upload screenshots from JS tests
         uses: actions/upload-artifact@v4
         if: ${{ failure() }}
