@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="sale_channel_dashboard_view_form" model="ir.ui.view">
+        <field name="model">sale.channel.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Amazon Dashboard" create="false">
+                <sheet>
+                    <group>
+                        <field name="sale_channel_id" />
+                        <field
+                            name="health_status"
+                            widget="badge"
+                            decoration-danger="health_status == 'attention'"
+                            decoration-success="health_status == 'ok'"
+                        />
+                    </group>
+                    <group string="Orders">
+                        <field name="orders_total" />
+                        <field name="orders_unshipped" />
+                    </group>
+                    <group string="Listings &amp; Pricing">
+                        <field name="listings_total" />
+                        <field name="listings_buybox_us" />
+                        <field name="buybox_win_rate" widget="percentage" />
+                        <field name="price_changes_7d" />
+                        <field name="offers_7d" />
+                        <field name="avg_margin" />
+                        <field name="listings_below_margin" />
+                    </group>
+                    <group string="FBA">
+                        <field name="fba_skus" />
+                        <field name="fba_drift_skus" />
+                        <field name="fba_total_drift" />
+                        <button
+                            name="action_open_fba_drift"
+                            type="object"
+                            string="View Drift"
+                            class="btn-link"
+                        />
+                    </group>
+                    <group string="Settlements">
+                        <field name="settlement_groups" />
+                        <field name="recon_matched" />
+                        <field name="recon_variance" />
+                        <field name="recon_no_invoice" />
+                        <field name="recon_variance_amount" />
+                        <button
+                            name="action_open_recon_variance"
+                            type="object"
+                            string="View Variance"
+                            class="btn-link"
+                        />
+                    </group>
+                    <group string="Returns">
+                        <field name="returns_open" />
+                        <field name="returns_credited" />
+                        <button
+                            name="action_open_returns_open"
+                            type="object"
+                            string="View Open Returns"
+                            class="btn-link"
+                        />
+                    </group>
+                    <group string="Health">
+                        <field name="failed_jobs" />
+                        <button
+                            name="action_open_failed_jobs"
+                            type="object"
+                            string="View Failed Jobs"
+                            class="btn-link"
+                        />
+                        <field name="last_order_sync" />
+                        <field name="last_price_sync" />
+                        <field name="last_fba_sync" />
+                        <field name="last_settlement_sync" />
+                        <field name="last_return_sync" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_channel_dashboard_action" model="ir.actions.act_window">
+        <field name="name">Amazon Dashboard</field>
+        <field name="res_model">sale.channel.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem
+        id="menu_sale_channel_dashboard"
+        name="Amazon Dashboard"
+        parent="sale.sale_menu_root"
+        action="sale_channel_dashboard_action"
+        sequence="90"
+    />
+</odoo>
