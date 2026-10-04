@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="model_sale_channel_product_price_history_company_rule" model="ir.rule">
+        <field name="name">sale_channel_product_price_history company</field>
+        <field name="model_id" ref="model_sale_channel_product_price_history" />
+        <field
+            name="domain_force"
+        >['|', ('sale_channel_product_id.sale_channel_id.company_id', '=', False), ('sale_channel_product_id.sale_channel_id.company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>
