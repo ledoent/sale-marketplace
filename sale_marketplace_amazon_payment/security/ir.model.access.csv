@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_scsg_user,settlement group user,model_sale_channel_settlement_group,base.group_user,1,0,0,0
+access_scsg_manager,settlement group manager,model_sale_channel_settlement_group,sales_team.group_sale_manager,1,1,1,1
+access_scfe_user,financial event user,model_sale_channel_financial_event,base.group_user,1,0,0,0
+access_scfe_manager,financial event manager,model_sale_channel_financial_event,sales_team.group_sale_manager,1,1,1,1
+access_scsr_user,settlement reconciliation user,model_sale_channel_settlement_reconciliation,base.group_user,1,0,0,0
+access_scsr_manager,settlement reconciliation manager,model_sale_channel_settlement_reconciliation,sales_team.group_sale_manager,1,1,1,1
