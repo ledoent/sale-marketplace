@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="sale_channel_return_view_tree" model="ir.ui.view">
+        <field name="model">sale.channel.return</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="rma_id" />
+                <field name="sale_channel_id" />
+                <field name="amazon_order_id" />
+                <field name="order_id" />
+                <field name="return_picking_id" />
+                <field name="credit_note_id" />
+                <field name="state" />
+            </list>
+        </field>
+    </record>
+
+    <record id="sale_channel_return_view_form" model="ir.ui.view">
+        <field name="model">sale.channel.return</field>
+        <field name="arch" type="xml">
+            <form string="Return">
+                <sheet>
+                    <group>
+                        <field name="rma_id" />
+                        <field name="sale_channel_id" />
+                        <field name="amazon_order_id" />
+                        <field name="order_id" />
+                        <field name="return_picking_id" />
+                        <field name="credit_note_id" />
+                        <field name="state" />
+                    </group>
+                    <field name="line_ids">
+                        <list>
+                            <field name="product_id" />
+                            <field name="seller_sku" />
+                            <field name="quantity" />
+                            <field name="return_reason" />
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_channel_return_action" model="ir.actions.act_window">
+        <field name="name">Amazon Returns</field>
+        <field name="res_model">sale.channel.return</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

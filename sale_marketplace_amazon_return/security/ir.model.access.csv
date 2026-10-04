@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_scr_user,return user,model_sale_channel_return,base.group_user,1,0,0,0
+access_scr_manager,return manager,model_sale_channel_return,sales_team.group_sale_manager,1,1,1,1
+access_scrl_user,return line user,model_sale_channel_return_line,base.group_user,1,0,0,0
+access_scrl_manager,return line manager,model_sale_channel_return_line,sales_team.group_sale_manager,1,1,1,1
+access_scrr_user,return report user,model_sale_channel_return_report,base.group_user,1,0,0,0
+access_scrr_manager,return report manager,model_sale_channel_return_report,sales_team.group_sale_manager,1,1,1,1

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="sale_channel_view_form" model="ir.ui.view">
+        <field name="model">sale.channel</field>
+        <field name="inherit_id" ref="sale_marketplace_amazon.sale_channel_view_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//button[@name='action_amazon_test_connection']"
+                position="after"
+            >
+                <button
+                    name="action_amazon_sync_competitive_prices"
+                    type="object"
+                    string="Sync Competitive Prices"
+                    class="btn-secondary"
+                    invisible="channel_type != 'amazon'"
+                />
+                <button
+                    name="action_amazon_push_prices"
+                    type="object"
+                    string="Push Prices"
+                    class="btn-secondary"
+                    invisible="channel_type != 'amazon'"
+                />
+            </xpath>
+            <group name="amazon_config" position="after">
+                <group
+                    name="amazon_pricing"
+                    string="Pricing"
+                    invisible="channel_type != 'amazon'"
+                >
+                    <field name="pricing_mode" />
+                    <field
+                        name="pricing_pricelist_id"
+                        invisible="pricing_mode != 'pricelist'"
+                        required="pricing_mode == 'pricelist'"
+                    />
+                    <field
+                        name="competitive_rule"
+                        invisible="pricing_mode != 'competitive'"
+                    />
+                    <field
+                        name="competitive_undercut_pct"
+                        invisible="pricing_mode != 'competitive' or competitive_rule != 'undercut'"
+                    />
+                    <field
+                        name="competitive_floor_margin_pct"
+                        invisible="pricing_mode != 'competitive'"
+                    />
+                    <field name="price_push_enabled" />
+                    <field name="last_price_sync_date" />
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>

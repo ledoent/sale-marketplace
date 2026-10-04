@@ -1,0 +1,5263 @@
+{
+  "provenance": "Published Amazon model examples; not live recordings",
+  "source": "https://github.com/amzn/selling-partner-api-models",
+  "revision": "3677bb9d96f4450e6843f1f8207005e925d5c867",
+  "operations": {
+    "getCompetitivePricing": {
+      "path": "/products/pricing/v0/competitivePrice",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "MarketplaceId",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "Asins",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 20
+        },
+        {
+          "name": "Skus",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 20
+        },
+        {
+          "name": "ItemType",
+          "in": "query",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "Asin",
+            "Sku"
+          ]
+        },
+        {
+          "name": "CustomerType",
+          "in": "query",
+          "required": false,
+          "type": "string",
+          "enum": [
+            "Consumer",
+            "Business"
+          ]
+        }
+      ],
+      "definitions": {},
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {
+            "MarketplaceId": "ATVPDKIKX0DER",
+            "ItemType": "Asin"
+          },
+          "response": {
+            "payload": [
+              {
+                "status": "Success",
+                "ASIN": "B00V5DG6IQ",
+                "Product": {
+                  "Identifiers": {
+                    "MarketplaceASIN": {
+                      "MarketplaceId": "ATVPDKIKX0DER",
+                      "ASIN": "B00V5DG6IQ"
+                    },
+                    "SKUIdentifier": {
+                      "MarketplaceId": "",
+                      "SellerId": "",
+                      "SellerSKU": ""
+                    }
+                  },
+                  "CompetitivePricing": {
+                    "CompetitivePrices": [
+                      {
+                        "CompetitivePriceId": "4545645646",
+                        "Price": {
+                          "LandedPrice": {
+                            "CurrencyCode": "USD",
+                            "Amount": 10
+                          },
+                          "ListingPrice": {
+                            "CurrencyCode": "USD",
+                            "Amount": 130
+                          },
+                          "Shipping": {
+                            "CurrencyCode": "USD",
+                            "Amount": 120
+                          },
+                          "Points": {
+                            "PointsNumber": 130,
+                            "PointsMonetaryValue": {
+                              "CurrencyCode": "USD",
+                              "Amount": 10
+                            }
+                          }
+                        },
+                        "condition": "new",
+                        "belongsToRequester": true
+                      }
+                    ],
+                    "NumberOfOfferListings": [
+                      {
+                        "Count": 20,
+                        "condition": "new"
+                      }
+                    ],
+                    "TradeInValue": {
+                      "CurrencyCode": "USD",
+                      "Amount": 10
+                    }
+                  },
+                  "SalesRankings": [
+                    {
+                      "ProductCategoryId": "325345",
+                      "Rank": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "status": "Success",
+                "ASIN": "B00551Q3CS",
+                "Product": {
+                  "Identifiers": {
+                    "MarketplaceASIN": {
+                      "MarketplaceId": "ATVPDKIKX0DER",
+                      "ASIN": "B00551Q3CS"
+                    },
+                    "SKUIdentifier": {
+                      "MarketplaceId": "",
+                      "SellerId": "",
+                      "SellerSKU": ""
+                    }
+                  },
+                  "CompetitivePricing": {
+                    "CompetitivePrices": [
+                      {
+                        "CompetitivePriceId": "45456452646",
+                        "Price": {
+                          "LandedPrice": {
+                            "CurrencyCode": "USD",
+                            "Amount": 10
+                          },
+                          "ListingPrice": {
+                            "CurrencyCode": "USD",
+                            "Amount": 130
+                          },
+                          "Shipping": {
+                            "CurrencyCode": "USD",
+                            "Amount": 120
+                          },
+                          "Points": {
+                            "PointsNumber": 130,
+                            "PointsMonetaryValue": {
+                              "CurrencyCode": "USD",
+                              "Amount": 10
+                            }
+                          }
+                        },
+                        "condition": "new",
+                        "belongsToRequester": true
+                      }
+                    ],
+                    "NumberOfOfferListings": [
+                      {
+                        "Count": 1,
+                        "condition": "new"
+                      }
+                    ],
+                    "TradeInValue": {
+                      "CurrencyCode": "string",
+                      "Amount": 0
+                    }
+                  },
+                  "SalesRankings": [
+                    {
+                      "ProductCategoryId": "54564",
+                      "Rank": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "parameters": {
+            "MarketplaceId": "ATVPDKIKX0DER",
+            "ItemType": "Sku"
+          },
+          "response": {
+            "payload": [
+              {
+                "status": "Success",
+                "SellerSKU": "NABetaASINB00V5DG6IQ",
+                "Product": {
+                  "Identifiers": {
+                    "MarketplaceASIN": {
+                      "MarketplaceId": "ATVPDKIKX0DER",
+                      "ASIN": "B00V5DG6IQ"
+                    },
+                    "SKUIdentifier": {
+                      "MarketplaceId": "ATVPDKIKX0DER",
+                      "SellerId": "AXXXXXXXXXXXXX",
+                      "SellerSKU": "NABetaASINB00V5DG6IQ"
+                    }
+                  },
+                  "CompetitivePricing": {
+                    "CompetitivePrices": [
+                      {
+                        "CompetitivePriceId": "3454535",
+                        "Price": {
+                          "LandedPrice": {
+                            "CurrencyCode": "USD",
+                            "Amount": 10
+                          },
+                          "ListingPrice": {
+                            "CurrencyCode": "USD",
+                            "Amount": 130
+                          },
+                          "Shipping": {
+                            "CurrencyCode": "USD",
+                            "Amount": 120
+                          },
+                          "Points": {
+                            "PointsNumber": 130,
+                            "PointsMonetaryValue": {
+                              "CurrencyCode": "USD",
+                              "Amount": 10
+                            }
+                          }
+                        },
+                        "condition": "new",
+                        "belongsToRequester": true
+                      }
+                    ],
+                    "NumberOfOfferListings": [
+                      {
+                        "Count": 402,
+                        "condition": "new"
+                      }
+                    ],
+                    "TradeInValue": {
+                      "CurrencyCode": "USD",
+                      "Amount": 20
+                    }
+                  },
+                  "SalesRankings": [
+                    {
+                      "ProductCategoryId": "676554",
+                      "Rank": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "status": "Success",
+                "SellerSKU": "NABetaASINB00551Q3CS",
+                "Product": {
+                  "Identifiers": {
+                    "MarketplaceASIN": {
+                      "MarketplaceId": "ATVPDKIKX0DER",
+                      "ASIN": "B00551Q3CS"
+                    },
+                    "SKUIdentifier": {
+                      "MarketplaceId": "ATVPDKIKX0DER",
+                      "SellerId": "AXXXXXXXXXXXXX",
+                      "SellerSKU": "NABetaASINB00551Q3CS"
+                    }
+                  },
+                  "CompetitivePricing": {
+                    "CompetitivePrices": [
+                      {
+                        "CompetitivePriceId": "4545645646",
+                        "Price": {
+                          "LandedPrice": {
+                            "CurrencyCode": "USD",
+                            "Amount": 10
+                          },
+                          "ListingPrice": {
+                            "CurrencyCode": "USD",
+                            "Amount": 130
+                          },
+                          "Shipping": {
+                            "CurrencyCode": "USD",
+                            "Amount": 120
+                          },
+                          "Points": {
+                            "PointsNumber": 130,
+                            "PointsMonetaryValue": {
+                              "CurrencyCode": "USD",
+                              "Amount": 10
+                            }
+                          }
+                        },
+                        "condition": "new",
+                        "belongsToRequester": true
+                      }
+                    ],
+                    "NumberOfOfferListings": [
+                      {
+                        "Count": 402,
+                        "condition": "new"
+                      }
+                    ],
+                    "TradeInValue": {
+                      "CurrencyCode": "USD",
+                      "Amount": 20
+                    }
+                  },
+                  "SalesRankings": [
+                    {
+                      "ProductCategoryId": "35345",
+                      "Rank": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "parameters": {
+            "MarketplaceId": "ATVPDKIKX0DER",
+            "ItemType": "Asin",
+            "CustomerType": "Business"
+          },
+          "response": {
+            "payload": [
+              {
+                "status": "Success",
+                "ASIN": "B00V5DG6IQ",
+                "Product": {
+                  "Identifiers": {
+                    "MarketplaceASIN": {
+                      "MarketplaceId": "ATVPDKIKX0DER",
+                      "ASIN": "B00V5DG6IQ"
+                    },
+                    "SKUIdentifier": {
+                      "MarketplaceId": "",
+                      "SellerId": "",
+                      "SellerSKU": ""
+                    }
+                  },
+                  "CompetitivePricing": {
+                    "CompetitivePrices": [
+                      {
+                        "CompetitivePriceId": "1",
+                        "Price": {
+                          "LandedPrice": {
+                            "CurrencyCode": "USD",
+                            "Amount": 120
+                          },
+                          "ListingPrice": {
+                            "CurrencyCode": "USD",
+                            "Amount": 130
+                          },
+                          "Shipping": {
+                            "CurrencyCode": "USD",
+                            "Amount": 10
+                          },
+                          "Points": {
+                            "PointsNumber": 130,
+                            "PointsMonetaryValue": {
+                              "CurrencyCode": "USD",
+                              "Amount": 10
+                            }
+                          }
+                        },
+                        "condition": "new",
+                        "offerType": "B2C",
+                        "sellerId": "AXXXXXXXXXXXXX",
+                        "belongsToRequester": true
+                      },
+                      {
+                        "CompetitivePriceId": "1",
+                        "Price": {
+                          "ListingPrice": {
+                            "CurrencyCode": "USD",
+                            "Amount": 115
+                          }
+                        },
+                        "condition": "new",
+                        "offerType": "B2B",
+                        "quantityTier": 3,
+                        "quantityDiscountType": "QUANTITY_DISCOUNT",
+                        "sellerId": "AXXXXXXXXXXXXX",
+                        "belongsToRequester": true
+                      },
+                      {
+                        "CompetitivePriceId": "1",
+                        "Price": {
+                          "ListingPrice": {
+                            "CurrencyCode": "USD",
+                            "Amount": 110
+                          }
+                        },
+                        "condition": "new",
+                        "offerType": "B2B",
+                        "quantityTier": 5,
+                        "quantityDiscountType": "QUANTITY_DISCOUNT",
+                        "sellerId": "AXXXXXXXXXXXXX",
+                        "belongsToRequester": true
+                      }
+                    ],
+                    "NumberOfOfferListings": [
+                      {
+                        "Count": 3,
+                        "condition": "new"
+                      }
+                    ],
+                    "TradeInValue": {
+                      "CurrencyCode": "USD",
+                      "Amount": 10
+                    }
+                  },
+                  "SalesRankings": [
+                    {
+                      "ProductCategoryId": "325345",
+                      "Rank": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "status": "Success",
+                "ASIN": "B00551Q3CS",
+                "Product": {
+                  "Identifiers": {
+                    "MarketplaceASIN": {
+                      "MarketplaceId": "ATVPDKIKX0DER",
+                      "ASIN": "B00551Q3CS"
+                    },
+                    "SKUIdentifier": {
+                      "MarketplaceId": "",
+                      "SellerId": "",
+                      "SellerSKU": ""
+                    }
+                  },
+                  "CompetitivePricing": {
+                    "CompetitivePrices": [
+                      {
+                        "CompetitivePriceId": "1",
+                        "Price": {
+                          "LandedPrice": {
+                            "CurrencyCode": "USD",
+                            "Amount": 10
+                          },
+                          "ListingPrice": {
+                            "CurrencyCode": "USD",
+                            "Amount": 130
+                          },
+                          "Shipping": {
+                            "CurrencyCode": "USD",
+                            "Amount": 120
+                          },
+                          "Points": {
+                            "PointsNumber": 130,
+                            "PointsMonetaryValue": {
+                              "CurrencyCode": "USD",
+                              "Amount": 10
+                            }
+                          }
+                        },
+                        "condition": "new",
+                        "offerType": "B2B",
+                        "sellerId": "AXXXXXXXXXXXXX",
+                        "belongsToRequester": true
+                      }
+                    ],
+                    "NumberOfOfferListings": [
+                      {
+                        "Count": 1,
+                        "condition": "new"
+                      }
+                    ],
+                    "TradeInValue": {
+                      "CurrencyCode": "string",
+                      "Amount": 0
+                    }
+                  },
+                  "SalesRankings": [
+                    {
+                      "ProductCategoryId": "54564",
+                      "Rank": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "MarketplaceId": "TEST_CASE_400"
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "InvalidInput",
+                "message": "Invalid Input"
+              }
+            ]
+          }
+        }
+      ],
+      "source": "productPricingV0.json"
+    },
+    "getOrders": {
+      "path": "/orders/v0/orders",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "CreatedAfter",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "CreatedBefore",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "LastUpdatedAfter",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "LastUpdatedBefore",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "OrderStatuses",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "MarketplaceIds",
+          "in": "query",
+          "required": true,
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 50
+        },
+        {
+          "name": "FulfillmentChannels",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "PaymentMethods",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "BuyerEmail",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "SellerOrderId",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "MaxResultsPerPage",
+          "in": "query",
+          "required": false,
+          "type": "integer"
+        },
+        {
+          "name": "EasyShipShipmentStatuses",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "ElectronicInvoiceStatuses",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "NextToken",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "AmazonOrderIds",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 50
+        },
+        {
+          "name": "ActualFulfillmentSupplySourceId",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "IsISPU",
+          "in": "query",
+          "required": false,
+          "type": "boolean"
+        },
+        {
+          "name": "StoreChainStoreId",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "EarliestDeliveryDateBefore",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "EarliestDeliveryDateAfter",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "LatestDeliveryDateBefore",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "LatestDeliveryDateAfter",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "definitions": {},
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {
+            "CreatedAfter": "TEST_CASE_200",
+            "MarketplaceIds": [
+              "ATVPDKIKX0DER"
+            ]
+          },
+          "response": {
+            "payload": {
+              "CreatedBefore": "1.569521782042E9",
+              "Orders": [
+                {
+                  "AmazonOrderId": "902-1845936-5435065",
+                  "PurchaseDate": "1970-01-19T03:58:30Z",
+                  "LastUpdateDate": "1970-01-19T03:58:32Z",
+                  "OrderStatus": "Unshipped",
+                  "FulfillmentChannel": "MFN",
+                  "SalesChannel": "Amazon.com",
+                  "ShipServiceLevel": "Std US D2D Dom",
+                  "OrderTotal": {
+                    "CurrencyCode": "USD",
+                    "Amount": "11.01"
+                  },
+                  "NumberOfItemsShipped": 0,
+                  "NumberOfItemsUnshipped": 1,
+                  "PaymentMethod": "Other",
+                  "PaymentMethodDetails": [
+                    "Standard"
+                  ],
+                  "IsReplacementOrder": false,
+                  "MarketplaceId": "ATVPDKIKX0DER",
+                  "ShipmentServiceLevelCategory": "Standard",
+                  "OrderType": "StandardOrder",
+                  "EarliestShipDate": "1970-01-19T03:59:27Z",
+                  "LatestShipDate": "1970-01-19T04:05:13Z",
+                  "EarliestDeliveryDate": "1970-01-19T04:06:39Z",
+                  "LatestDeliveryDate": "1970-01-19T04:15:17Z",
+                  "IsBusinessOrder": false,
+                  "IsPrime": false,
+                  "IsGlobalExpressEnabled": false,
+                  "IsPremiumOrder": false,
+                  "IsSoldByAB": false,
+                  "IsIBA": false,
+                  "DefaultShipFromLocationAddress": {
+                    "Name": "MFNIntegrationTestMerchant",
+                    "AddressLine1": "2201 WESTLAKE AVE",
+                    "City": "SEATTLE",
+                    "StateOrRegion": "WA",
+                    "PostalCode": "98121-2778",
+                    "CountryCode": "US",
+                    "Phone": "+1 480-386-0930 ext. 73824",
+                    "AddressType": "Commercial"
+                  },
+                  "FulfillmentInstruction": {
+                    "FulfillmentSupplySourceId": "sampleSupplySourceId"
+                  },
+                  "IsISPU": false,
+                  "IsAccessPointOrder": false,
+                  "AutomatedShippingSettings": {
+                    "HasAutomatedShippingSettings": false
+                  },
+                  "EasyShipShipmentStatus": "PendingPickUp",
+                  "ElectronicInvoiceStatus": "NotRequired"
+                },
+                {
+                  "AmazonOrderId": "902-8745147-1934268",
+                  "PurchaseDate": "1970-01-19T03:58:30Z",
+                  "LastUpdateDate": "1970-01-19T03:58:32Z",
+                  "OrderStatus": "Unshipped",
+                  "FulfillmentChannel": "MFN",
+                  "SalesChannel": "Amazon.com",
+                  "ShipServiceLevel": "Std US D2D Dom",
+                  "OrderTotal": {
+                    "CurrencyCode": "USD",
+                    "Amount": "11.01"
+                  },
+                  "NumberOfItemsShipped": 0,
+                  "NumberOfItemsUnshipped": 1,
+                  "PaymentMethod": "Other",
+                  "PaymentMethodDetails": [
+                    "Standard"
+                  ],
+                  "IsReplacementOrder": false,
+                  "MarketplaceId": "ATVPDKIKX0DER",
+                  "ShipmentServiceLevelCategory": "Standard",
+                  "OrderType": "StandardOrder",
+                  "EarliestShipDate": "1970-01-19T03:59:27Z",
+                  "LatestShipDate": "1970-01-19T04:05:13Z",
+                  "EarliestDeliveryDate": "1970-01-19T04:06:39Z",
+                  "LatestDeliveryDate": "1970-01-19T04:15:17Z",
+                  "IsBusinessOrder": false,
+                  "IsPrime": false,
+                  "IsAccessPointOrder": false,
+                  "IsGlobalExpressEnabled": false,
+                  "IsPremiumOrder": false,
+                  "IsSoldByAB": false,
+                  "IsIBA": false,
+                  "EasyShipShipmentStatus": "PendingPickUp",
+                  "ElectronicInvoiceStatus": "NotRequired"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "status": 200,
+          "parameters": {
+            "CreatedAfter": "TEST_CASE_200_NEXT_TOKEN",
+            "MarketplaceIds": [
+              "ATVPDKIKX0DER"
+            ]
+          },
+          "response": {
+            "payload": {
+              "NextToken": "2YgYW55IGNhcm5hbCBwbGVhc3VyZS4",
+              "Orders": [
+                {
+                  "AmazonOrderId": "902-3159896-1390916",
+                  "PurchaseDate": "2017-01-20T19:49:35Z",
+                  "LastUpdateDate": "2017-01-20T19:49:35Z",
+                  "OrderStatus": "Pending",
+                  "FulfillmentChannel": "MFN",
+                  "NumberOfItemsShipped": 0,
+                  "NumberOfItemsUnshipped": 0,
+                  "PaymentMethod": "Other",
+                  "PaymentMethodDetails": [
+                    "CreditCard",
+                    "GiftCertificate"
+                  ],
+                  "MarketplaceId": "ATVPDKIKX0DER",
+                  "ShipmentServiceLevelCategory": "Standard",
+                  "OrderType": "StandardOrder",
+                  "EasyShipShipmentStatus": "PendingPickUp",
+                  "ElectronicInvoiceStatus": "NotRequired",
+                  "EarliestShipDate": "2017-01-20T19:51:16Z",
+                  "LatestShipDate": "2017-01-25T19:49:35Z",
+                  "IsBusinessOrder": false,
+                  "IsPrime": false,
+                  "IsAccessPointOrder": false,
+                  "IsGlobalExpressEnabled": false,
+                  "IsPremiumOrder": false,
+                  "IsSoldByAB": false,
+                  "IsIBA": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "status": 200,
+          "parameters": {
+            "CreatedAfter": "TEST_CASE_200_NEXT_TOKEN",
+            "MarketplaceIds": [
+              "ATVPDKIKX0DER"
+            ],
+            "NextToken": "2YgYW55IGNhcm5hbCBwbGVhc3VyZS4"
+          },
+          "response": {
+            "payload": {
+              "Orders": [
+                {
+                  "AmazonOrderId": "902-3159896-1390916",
+                  "PurchaseDate": "2017-01-20T19:49:35Z",
+                  "LastUpdateDate": "2017-01-20T19:49:35Z",
+                  "OrderStatus": "Pending",
+                  "FulfillmentChannel": "MFN",
+                  "NumberOfItemsShipped": 0,
+                  "NumberOfItemsUnshipped": 0,
+                  "PaymentMethod": "Other",
+                  "PaymentMethodDetails": [
+                    "CreditCard",
+                    "GiftCertificate"
+                  ],
+                  "MarketplaceId": "ATVPDKIKX0DER",
+                  "ShipmentServiceLevelCategory": "Standard",
+                  "OrderType": "StandardOrder",
+                  "EasyShipShipmentStatus": "PendingPickUp",
+                  "ElectronicInvoiceStatus": "NotRequired",
+                  "EarliestShipDate": "2017-01-20T19:51:16Z",
+                  "LatestShipDate": "2017-01-25T19:49:35Z",
+                  "IsBusinessOrder": false,
+                  "IsPrime": false,
+                  "IsAccessPointOrder": false,
+                  "IsGlobalExpressEnabled": false,
+                  "IsPremiumOrder": false,
+                  "IsSoldByAB": false,
+                  "IsIBA": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "CreatedAfter": "TEST_CASE_400"
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "InvalidInput",
+                "message": "Invalid Input"
+              }
+            ]
+          }
+        }
+      ],
+      "source": "ordersV0.json"
+    },
+    "getOrder": {
+      "path": "/orders/v0/orders/{orderId}",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "orderId",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "definitions": {},
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {
+            "orderId": "TEST_CASE_200"
+          },
+          "response": {
+            "payload": {
+              "AmazonOrderId": "902-1845936-5435065",
+              "PurchaseDate": "1970-01-19T03:58:30Z",
+              "LastUpdateDate": "1970-01-19T03:58:32Z",
+              "OrderStatus": "Unshipped",
+              "FulfillmentChannel": "MFN",
+              "SalesChannel": "Amazon.com",
+              "ShipServiceLevel": "Std US D2D Dom",
+              "OrderTotal": {
+                "CurrencyCode": "USD",
+                "Amount": "11.01"
+              },
+              "NumberOfItemsShipped": 0,
+              "NumberOfItemsUnshipped": 1,
+              "PaymentMethod": "Other",
+              "PaymentMethodDetails": [
+                "Standard"
+              ],
+              "IsReplacementOrder": false,
+              "MarketplaceId": "ATVPDKIKX0DER",
+              "ShipmentServiceLevelCategory": "Standard",
+              "OrderType": "StandardOrder",
+              "EarliestShipDate": "1970-01-19T03:59:27Z",
+              "LatestShipDate": "1970-01-19T04:05:13Z",
+              "EarliestDeliveryDate": "1970-01-19T04:06:39Z",
+              "LatestDeliveryDate": "1970-01-19T04:15:17Z",
+              "IsBusinessOrder": false,
+              "IsPrime": false,
+              "IsGlobalExpressEnabled": false,
+              "IsPremiumOrder": false,
+              "IsSoldByAB": false,
+              "IsIBA": false,
+              "DefaultShipFromLocationAddress": {
+                "Name": "MFNIntegrationTestMerchant",
+                "AddressLine1": "2201 WESTLAKE AVE",
+                "City": "SEATTLE",
+                "StateOrRegion": "WA",
+                "PostalCode": "98121-2778",
+                "CountryCode": "US",
+                "Phone": "+1 480-386-0930 ext. 73824",
+                "AddressType": "Commercial"
+              },
+              "FulfillmentInstruction": {
+                "FulfillmentSupplySourceId": "sampleSupplySourceId"
+              },
+              "IsISPU": false,
+              "IsAccessPointOrder": false,
+              "AutomatedShippingSettings": {
+                "HasAutomatedShippingSettings": false
+              },
+              "EasyShipShipmentStatus": "PendingPickUp",
+              "ElectronicInvoiceStatus": "NotRequired"
+            }
+          }
+        },
+        {
+          "status": 200,
+          "parameters": {
+            "orderId": "TEST_CASE_IBA_200"
+          },
+          "response": {
+            "payload": {
+              "AmazonOrderId": "921-3175655-0452641",
+              "PurchaseDate": "2019-05-07T15:42:57.058Z",
+              "LastUpdateDate": "2019-05-08T21:59:59Z",
+              "OrderStatus": "Shipped",
+              "FulfillmentChannel": "AFN",
+              "SalesChannel": "Amazon.de",
+              "ShipServiceLevel": "Standard",
+              "OrderTotal": {
+                "CurrencyCode": "EUR",
+                "Amount": "100.00"
+              },
+              "NumberOfItemsShipped": 1,
+              "NumberOfItemsUnshipped": 0,
+              "PaymentMethod": "Other",
+              "PaymentMethodDetails": [
+                "Invoice"
+              ],
+              "PaymentExecutionDetail": [
+                {
+                  "Payment": {
+                    "CurrencyCode": "BRL",
+                    "Amount": "20.00"
+                  },
+                  "PaymentMethod": "Pix",
+                  "AcquirerId": "XX.XXX.XXX/0001-ZZ",
+                  "AuthorizationCode": "123456"
+                }
+              ],
+              "IsReplacementOrder": false,
+              "MarketplaceId": "A1PA6795UKMFR9",
+              "ShipmentServiceLevelCategory": "Standard",
+              "OrderType": "StandardOrder",
+              "EarliestShipDate": "1970-01-19T03:59:27Z",
+              "LatestShipDate": "2019-05-08T21:59:59Z",
+              "EarliestDeliveryDate": "2019-05-10T21:59:59Z",
+              "LatestDeliveryDate": "2019-05-12T21:59:59Z",
+              "IsBusinessOrder": true,
+              "IsPrime": false,
+              "IsGlobalExpressEnabled": false,
+              "IsPremiumOrder": false,
+              "IsSoldByAB": true,
+              "IsIBA": true,
+              "DefaultShipFromLocationAddress": {
+                "Name": "MFNIntegrationTestMerchant",
+                "AddressLine1": "2201 WESTLAKE AVE",
+                "City": "SEATTLE",
+                "StateOrRegion": "WA",
+                "PostalCode": "98121-2778",
+                "CountryCode": "US",
+                "Phone": "+1 480-386-0930 ext. 73824",
+                "AddressType": "Commercial"
+              },
+              "FulfillmentInstruction": {
+                "FulfillmentSupplySourceId": "sampleSupplySourceId"
+              },
+              "IsISPU": false,
+              "IsAccessPointOrder": false,
+              "AutomatedShippingSettings": {
+                "HasAutomatedShippingSettings": false
+              },
+              "EasyShipShipmentStatus": "PendingPickUp",
+              "ElectronicInvoiceStatus": "NotRequired"
+            }
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "orderId": "TEST_CASE_400"
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "InvalidInput",
+                "message": "Invalid Input"
+              }
+            ]
+          }
+        }
+      ],
+      "source": "ordersV0.json"
+    },
+    "getOrderAddress": {
+      "path": "/orders/v0/orders/{orderId}/address",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "orderId",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "definitions": {},
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {
+            "orderId": "TEST_CASE_200"
+          },
+          "response": {
+            "payload": {
+              "AmazonOrderId": "902-1845936-5435065",
+              "ShippingAddress": {
+                "Name": "MFNIntegrationTestMerchant",
+                "AddressLine1": "2201 WESTLAKE AVE",
+                "City": "SEATTLE",
+                "StateOrRegion": "WA",
+                "PostalCode": "98121-2778",
+                "CountryCode": "US",
+                "Phone": "+1 480-386-0930 ext. 73824",
+                "AddressType": "Commercial"
+              }
+            }
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "orderId": "TEST_CASE_400"
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "InvalidInput",
+                "message": "Invalid Input"
+              }
+            ]
+          }
+        }
+      ],
+      "source": "ordersV0.json"
+    },
+    "getOrderItems": {
+      "path": "/orders/v0/orders/{orderId}/orderItems",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "orderId",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "NextToken",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "definitions": {},
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {
+            "orderId": "TEST_CASE_200"
+          },
+          "response": {
+            "payload": {
+              "AmazonOrderId": "902-1845936-5435065",
+              "OrderItems": [
+                {
+                  "ASIN": "B00551Q3CS",
+                  "OrderItemId": "05015851154158",
+                  "SellerSKU": "NABetaASINB00551Q3CS",
+                  "Title": "B00551Q3CS [Card Book]",
+                  "QuantityOrdered": 1,
+                  "QuantityShipped": 0,
+                  "ProductInfo": {
+                    "NumberOfItems": "1"
+                  },
+                  "ItemPrice": {
+                    "CurrencyCode": "USD",
+                    "Amount": "10.00"
+                  },
+                  "ItemTax": {
+                    "CurrencyCode": "USD",
+                    "Amount": "1.01"
+                  },
+                  "PromotionDiscount": {
+                    "CurrencyCode": "USD",
+                    "Amount": "0.00"
+                  },
+                  "IsGift": "false",
+                  "ConditionId": "New",
+                  "ConditionSubtypeId": "New",
+                  "IsTransparency": false,
+                  "SerialNumberRequired": false,
+                  "IossNumber": "",
+                  "DeemedResellerCategory": "IOSS",
+                  "StoreChainStoreId": "ISPU_StoreId",
+                  "BuyerRequestedCancel": {
+                    "IsBuyerRequestedCancel": "true",
+                    "BuyerCancelReason": "Found cheaper somewhere else."
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "orderId": "TEST_CASE_400"
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "InvalidInput",
+                "message": "Invalid Input"
+              }
+            ]
+          }
+        }
+      ],
+      "source": "ordersV0.json"
+    },
+    "confirmShipment": {
+      "path": "/orders/v0/orders/{orderId}/shipmentConfirmation",
+      "method": "POST",
+      "parameters": [
+        {
+          "name": "orderId",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "payload",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/ConfirmShipmentRequest"
+          }
+        }
+      ],
+      "definitions": {
+        "ConfirmShipmentRequest": {
+          "type": "object",
+          "required": [
+            "marketplaceId",
+            "packageDetail"
+          ],
+          "properties": {
+            "packageDetail": {
+              "$ref": "#/definitions/PackageDetail"
+            },
+            "codCollectionMethod": {
+              "type": "string",
+              "enum": [
+                "DirectPayment"
+              ]
+            },
+            "marketplaceId": {
+              "$ref": "#/definitions/MarketplaceId"
+            }
+          }
+        },
+        "PackageDetail": {
+          "type": "object",
+          "required": [
+            "packageReferenceId",
+            "carrierCode",
+            "trackingNumber",
+            "shipDate",
+            "orderItems"
+          ],
+          "properties": {
+            "packageReferenceId": {
+              "$ref": "#/definitions/PackageReferenceId"
+            },
+            "carrierCode": {
+              "type": "string"
+            },
+            "carrierName": {
+              "type": "string"
+            },
+            "shippingMethod": {
+              "type": "string"
+            },
+            "trackingNumber": {
+              "type": "string"
+            },
+            "shipDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "shipFromSupplySourceId": {
+              "type": "string"
+            },
+            "orderItems": {
+              "$ref": "#/definitions/ConfirmShipmentOrderItemsList"
+            }
+          }
+        },
+        "PackageReferenceId": {
+          "type": "string"
+        },
+        "ConfirmShipmentOrderItemsList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConfirmShipmentOrderItem"
+          }
+        },
+        "ConfirmShipmentOrderItem": {
+          "type": "object",
+          "required": [
+            "orderItemId",
+            "quantity"
+          ],
+          "properties": {
+            "orderItemId": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "integer"
+            },
+            "transparencyCodes": {
+              "$ref": "#/definitions/TransparencyCodeList"
+            }
+          }
+        },
+        "TransparencyCodeList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransparencyCode"
+          }
+        },
+        "TransparencyCode": {
+          "type": "string"
+        },
+        "MarketplaceId": {
+          "type": "string"
+        }
+      },
+      "cases": [
+        {
+          "status": 204,
+          "parameters": {
+            "orderId": "902-1106328-1059050",
+            "body": {
+              "marketplaceId": "ATVPDKIKX0DER",
+              "packageDetail": {
+                "packageReferenceId": "1",
+                "carrierCode": "FedEx",
+                "carrierName": "FedEx",
+                "shippingMethod": "FedEx Ground",
+                "trackingNumber": "112345678",
+                "shipDate": "2022-02-11T01:00:00.000Z",
+                "shipFromSupplySourceId": "057d3fcc-b750-419f-bbcd-4d340c60c430",
+                "orderItems": [
+                  {
+                    "orderItemId": "79039765272157",
+                    "quantity": 1,
+                    "transparencyCodes": [
+                      "09876543211234567890"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "response": {}
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "orderId": "902-1106328-1059050",
+            "body": {
+              "marketplaceId": "ATVPDKIKX0DER",
+              "packageDetail": {
+                "packageReferenceId": "1",
+                "carrierCode": "FedEx",
+                "carrierName": "FedEx",
+                "shippingMethod": "FedEx Ground",
+                "trackingNumber": "112345678",
+                "shipDate": "02/21/2022",
+                "shipFromSupplySourceId": "057d3fcc-b750-419f-bbcd-4d340c60c430",
+                "orderItems": [
+                  {
+                    "orderItemId": "79039765272157",
+                    "quantity": 1,
+                    "transparencyCodes": [
+                      "09876543211234567890"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "Invalid Input",
+                "message": "Invalid Input"
+              }
+            ]
+          }
+        }
+      ],
+      "source": "ordersV0.json"
+    },
+    "createFulfillmentOrder": {
+      "path": "/fba/outbound/2020-07-01/fulfillmentOrders",
+      "method": "POST",
+      "parameters": [
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/CreateFulfillmentOrderRequest"
+          }
+        }
+      ],
+      "definitions": {
+        "CreateFulfillmentOrderRequest": {
+          "type": "object",
+          "required": [
+            "destinationAddress",
+            "displayableOrderComment",
+            "displayableOrderDate",
+            "displayableOrderId",
+            "items",
+            "sellerFulfillmentOrderId",
+            "shippingSpeedCategory"
+          ],
+          "properties": {
+            "marketplaceId": {
+              "type": "string"
+            },
+            "sellerFulfillmentOrderId": {
+              "type": "string",
+              "maxLength": 40
+            },
+            "displayableOrderId": {
+              "type": "string",
+              "maxLength": 40
+            },
+            "displayableOrderDate": {
+              "$ref": "#/definitions/Timestamp"
+            },
+            "displayableOrderComment": {
+              "type": "string",
+              "maxLength": 750
+            },
+            "shippingSpeedCategory": {
+              "$ref": "#/definitions/ShippingSpeedCategory"
+            },
+            "deliveryWindow": {
+              "$ref": "#/definitions/DeliveryWindow"
+            },
+            "destinationAddress": {
+              "$ref": "#/definitions/Address"
+            },
+            "deliveryPreferences": {
+              "$ref": "#/definitions/DeliveryPreferences"
+            },
+            "fulfillmentAction": {
+              "$ref": "#/definitions/FulfillmentAction"
+            },
+            "fulfillmentPolicy": {
+              "$ref": "#/definitions/FulfillmentPolicy"
+            },
+            "codSettings": {
+              "$ref": "#/definitions/CODSettings"
+            },
+            "shipFromCountryCode": {
+              "type": "string"
+            },
+            "notificationEmails": {
+              "$ref": "#/definitions/NotificationEmailList"
+            },
+            "featureConstraints": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FeatureSettings"
+              }
+            },
+            "items": {
+              "$ref": "#/definitions/CreateFulfillmentOrderItemList"
+            },
+            "paymentInformation": {
+              "$ref": "#/definitions/PaymentInformationList"
+            }
+          }
+        },
+        "Timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "ShippingSpeedCategory": {
+          "type": "string",
+          "enum": [
+            "Standard",
+            "Expedited",
+            "Priority",
+            "ScheduledDelivery"
+          ]
+        },
+        "DeliveryWindow": {
+          "type": "object",
+          "required": [
+            "endDate",
+            "startDate"
+          ],
+          "properties": {
+            "startDate": {
+              "$ref": "#/definitions/Timestamp"
+            },
+            "endDate": {
+              "$ref": "#/definitions/Timestamp"
+            }
+          }
+        },
+        "Address": {
+          "type": "object",
+          "required": [
+            "addressLine1",
+            "countryCode",
+            "name",
+            "postalCode"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "addressLine1": {
+              "type": "string"
+            },
+            "addressLine2": {
+              "type": "string"
+            },
+            "addressLine3": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "districtOrCounty": {
+              "type": "string"
+            },
+            "stateOrRegion": {
+              "type": "string"
+            },
+            "postalCode": {
+              "type": "string"
+            },
+            "countryCode": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "string"
+            }
+          }
+        },
+        "DeliveryPreferences": {
+          "type": "object",
+          "properties": {
+            "deliveryInstructions": {
+              "type": "string",
+              "maxLength": 250
+            },
+            "dropOffLocation": {
+              "$ref": "#/definitions/DropOffLocation"
+            }
+          }
+        },
+        "DropOffLocation": {
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "FRONT_DOOR",
+                "DELIVERY_BOX",
+                "GAS_METER_BOX",
+                "BICYCLE_BASKET",
+                "GARAGE",
+                "RECEPTIONIST",
+                "FALLBACK_NEIGHBOR_DELIVERY",
+                "DO_NOT_LEAVE_UNATTENDED"
+              ]
+            },
+            "attributes": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "FulfillmentAction": {
+          "type": "string",
+          "enum": [
+            "Ship",
+            "Hold"
+          ]
+        },
+        "FulfillmentPolicy": {
+          "type": "string",
+          "enum": [
+            "FillOrKill",
+            "FillAll",
+            "FillAllAvailable"
+          ]
+        },
+        "CODSettings": {
+          "type": "object",
+          "required": [
+            "isCodRequired"
+          ],
+          "properties": {
+            "isCodRequired": {
+              "type": "boolean"
+            },
+            "codCharge": {
+              "$ref": "#/definitions/Money"
+            },
+            "codChargeTax": {
+              "$ref": "#/definitions/Money"
+            },
+            "shippingCharge": {
+              "$ref": "#/definitions/Money"
+            },
+            "shippingChargeTax": {
+              "$ref": "#/definitions/Money"
+            }
+          }
+        },
+        "Money": {
+          "type": "object",
+          "required": [
+            "currencyCode",
+            "value"
+          ],
+          "properties": {
+            "currencyCode": {
+              "type": "string"
+            },
+            "value": {
+              "$ref": "#/definitions/Decimal"
+            }
+          }
+        },
+        "Decimal": {
+          "type": "string"
+        },
+        "NotificationEmailList": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 64
+          }
+        },
+        "FeatureSettings": {
+          "type": "object",
+          "properties": {
+            "featureName": {
+              "type": "string"
+            },
+            "featureFulfillmentPolicy": {
+              "type": "string",
+              "enum": [
+                "Required",
+                "NotRequired"
+              ]
+            }
+          }
+        },
+        "CreateFulfillmentOrderItemList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreateFulfillmentOrderItem"
+          }
+        },
+        "CreateFulfillmentOrderItem": {
+          "type": "object",
+          "required": [
+            "quantity",
+            "sellerFulfillmentOrderItemId",
+            "sellerSku"
+          ],
+          "properties": {
+            "sellerSku": {
+              "type": "string",
+              "maxLength": 50
+            },
+            "sellerFulfillmentOrderItemId": {
+              "type": "string",
+              "maxLength": 50
+            },
+            "quantity": {
+              "$ref": "#/definitions/Quantity"
+            },
+            "giftMessage": {
+              "type": "string",
+              "maxLength": 512
+            },
+            "displayableComment": {
+              "type": "string",
+              "maxLength": 250
+            },
+            "fulfillmentNetworkSku": {
+              "type": "string"
+            },
+            "perUnitDeclaredValue": {
+              "$ref": "#/definitions/Money"
+            },
+            "perUnitPrice": {
+              "$ref": "#/definitions/Money"
+            },
+            "perUnitTax": {
+              "$ref": "#/definitions/Money"
+            }
+          }
+        },
+        "Quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PaymentInformationList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PaymentInformation"
+          }
+        },
+        "PaymentInformation": {
+          "type": "object",
+          "required": [
+            "paymentTransactionId",
+            "paymentMode",
+            "paymentDate"
+          ],
+          "properties": {
+            "paymentTransactionId": {
+              "type": "string"
+            },
+            "paymentMode": {
+              "type": "string"
+            },
+            "paymentDate": {
+              "$ref": "#/definitions/Timestamp"
+            }
+          }
+        }
+      },
+      "cases": [],
+      "source": "fulfillmentOutbound_2020-07-01.json"
+    },
+    "getFulfillmentOrder": {
+      "path": "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "sellerFulfillmentOrderId",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "maxLength": 40
+        }
+      ],
+      "definitions": {},
+      "cases": [],
+      "source": "fulfillmentOutbound_2020-07-01.json"
+    },
+    "cancelFulfillmentOrder": {
+      "path": "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/cancel",
+      "method": "PUT",
+      "parameters": [
+        {
+          "name": "sellerFulfillmentOrderId",
+          "in": "path",
+          "required": true,
+          "type": "string",
+          "maxLength": 40
+        }
+      ],
+      "definitions": {},
+      "cases": [],
+      "source": "fulfillmentOutbound_2020-07-01.json"
+    },
+    "getMyFeesEstimateForSKU": {
+      "path": "/products/fees/v0/listings/{SellerSKU}/feesEstimate",
+      "method": "POST",
+      "parameters": [
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/GetMyFeesEstimateRequest"
+          }
+        },
+        {
+          "name": "SellerSKU",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "definitions": {
+        "GetMyFeesEstimateRequest": {
+          "type": "object",
+          "properties": {
+            "FeesEstimateRequest": {
+              "$ref": "#/definitions/FeesEstimateRequest"
+            }
+          }
+        },
+        "FeesEstimateRequest": {
+          "type": "object",
+          "required": [
+            "MarketplaceId",
+            "PriceToEstimateFees",
+            "Identifier"
+          ],
+          "properties": {
+            "MarketplaceId": {
+              "type": "string"
+            },
+            "IsAmazonFulfilled": {
+              "type": "boolean"
+            },
+            "PriceToEstimateFees": {
+              "$ref": "#/definitions/PriceToEstimateFees"
+            },
+            "Identifier": {
+              "type": "string"
+            },
+            "OptionalFulfillmentProgram": {
+              "$ref": "#/definitions/OptionalFulfillmentProgram"
+            }
+          }
+        },
+        "PriceToEstimateFees": {
+          "type": "object",
+          "required": [
+            "ListingPrice"
+          ],
+          "properties": {
+            "ListingPrice": {
+              "$ref": "#/definitions/MoneyType"
+            },
+            "Shipping": {
+              "$ref": "#/definitions/MoneyType"
+            },
+            "Points": {
+              "$ref": "#/definitions/Points"
+            }
+          }
+        },
+        "MoneyType": {
+          "type": "object",
+          "properties": {
+            "CurrencyCode": {
+              "type": "string"
+            },
+            "Amount": {
+              "type": "number"
+            }
+          }
+        },
+        "Points": {
+          "type": "object",
+          "properties": {
+            "PointsNumber": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "PointsMonetaryValue": {
+              "$ref": "#/definitions/MoneyType"
+            }
+          }
+        },
+        "OptionalFulfillmentProgram": {
+          "type": "string",
+          "enum": [
+            "FBA_CORE",
+            "FBA_SNL",
+            "FBA_EFN"
+          ]
+        }
+      },
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {
+            "body": {
+              "FeesEstimateRequest": {
+                "MarketplaceId": "ATVPDKIKX0DER",
+                "IsAmazonFulfilled": false,
+                "PriceToEstimateFees": {
+                  "ListingPrice": {
+                    "CurrencyCode": "USD",
+                    "Amount": 10
+                  },
+                  "Shipping": {
+                    "CurrencyCode": "USD",
+                    "Amount": 10
+                  },
+                  "Points": {
+                    "PointsNumber": 0,
+                    "PointsMonetaryValue": {
+                      "CurrencyCode": "USD",
+                      "Amount": 0
+                    }
+                  }
+                },
+                "Identifier": "UmaS1"
+              }
+            }
+          },
+          "response": {
+            "payload": {
+              "FeesEstimateResult": {
+                "Status": "Success",
+                "FeesEstimateIdentifier": {
+                  "MarketplaceId": "ATVPDKIKX0DER",
+                  "IdType": "ASIN",
+                  "SellerId": "AXXXXXXXXXXXXX",
+                  "SellerInputIdentifier": "UmaS1",
+                  "IsAmazonFulfilled": false,
+                  "IdValue": "B00V5DG6IQ",
+                  "PriceToEstimateFees": {
+                    "ListingPrice": {
+                      "CurrencyCode": "USD",
+                      "Amount": 10
+                    },
+                    "Shipping": {
+                      "CurrencyCode": "USD",
+                      "Amount": 10
+                    },
+                    "Points": {
+                      "PointsNumber": 0,
+                      "PointsMonetaryValue": {
+                        "CurrencyCode": "USD",
+                        "Amount": 0
+                      }
+                    }
+                  }
+                },
+                "FeesEstimate": {
+                  "TimeOfFeesEstimation": "Mon Oct 28 18:49:32 UTC 2019",
+                  "TotalFeesEstimate": {
+                    "CurrencyCode": "USD",
+                    "Amount": 3.0
+                  },
+                  "FeeDetailList": []
+                },
+                "Error": {
+                  "Type": "",
+                  "Code": "",
+                  "Message": "",
+                  "Detail": []
+                }
+              }
+            }
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "body": {
+              "FeesEstimateRequest": {
+                "MarketplaceId": "WRNGMRKTPLCE"
+              }
+            }
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "InvalidInput",
+                "message": "Incorrect Marketplace identifier.",
+                "details": ""
+              }
+            ]
+          }
+        }
+      ],
+      "source": "productFeesV0.json"
+    },
+    "createSubscription": {
+      "path": "/notifications/v1/subscriptions/{notificationType}",
+      "method": "POST",
+      "parameters": [
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/CreateSubscriptionRequest"
+          }
+        },
+        {
+          "name": "notificationType",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "definitions": {
+        "CreateSubscriptionRequest": {
+          "type": "object",
+          "properties": {
+            "payloadVersion": {
+              "type": "string"
+            },
+            "destinationId": {
+              "type": "string"
+            },
+            "processingDirective": {
+              "$ref": "#/definitions/ProcessingDirective"
+            }
+          },
+          "required": [
+            "destinationId",
+            "payloadVersion"
+          ]
+        },
+        "ProcessingDirective": {
+          "type": "object",
+          "properties": {
+            "eventFilter": {
+              "$ref": "#/definitions/EventFilter"
+            },
+            "filterExpression": {
+              "type": "string",
+              "maxLength": 256,
+              "minLength": 1
+            }
+          }
+        },
+        "EventFilter": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/AggregationFilter"
+            },
+            {
+              "$ref": "#/definitions/MarketplaceFilter"
+            },
+            {
+              "$ref": "#/definitions/OrderChangeTypeFilter"
+            },
+            {
+              "$ref": "#/definitions/TrackingFilter"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "eventFilterType": {
+                  "type": "string",
+                  "enum": [
+                    "ANY_OFFER_CHANGED",
+                    "ORDER_CHANGE",
+                    "SHIPMENT_TRACKING_MILESTONE_CHANGED"
+                  ]
+                }
+              },
+              "required": [
+                "eventFilterType"
+              ]
+            }
+          ]
+        },
+        "AggregationFilter": {
+          "type": "object",
+          "properties": {
+            "aggregationSettings": {
+              "$ref": "#/definitions/AggregationSettings"
+            }
+          }
+        },
+        "AggregationSettings": {
+          "type": "object",
+          "properties": {
+            "aggregationTimePeriod": {
+              "$ref": "#/definitions/AggregationTimePeriod"
+            }
+          },
+          "required": [
+            "aggregationTimePeriod"
+          ]
+        },
+        "AggregationTimePeriod": {
+          "type": "string",
+          "enum": [
+            "FiveMinutes",
+            "TenMinutes"
+          ]
+        },
+        "MarketplaceFilter": {
+          "type": "object",
+          "properties": {
+            "marketplaceIds": {
+              "$ref": "#/definitions/MarketplaceIds"
+            }
+          }
+        },
+        "MarketplaceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "OrderChangeTypeFilter": {
+          "type": "object",
+          "properties": {
+            "orderChangeTypes": {
+              "$ref": "#/definitions/OrderChangeTypes"
+            }
+          }
+        },
+        "OrderChangeTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderChangeTypeEnum"
+          }
+        },
+        "OrderChangeTypeEnum": {
+          "type": "string",
+          "enum": [
+            "BuyerRequestedChange",
+            "DeliveryTipChange",
+            "OrderStatusChange"
+          ]
+        },
+        "TrackingFilter": {
+          "type": "object",
+          "properties": {
+            "trackingIdentifier": {
+              "$ref": "#/definitions/TrackingIdentifier"
+            }
+          }
+        },
+        "TrackingIdentifier": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "acsin": {
+              "type": "string"
+            },
+            "aftn": {
+              "type": "string"
+            },
+            "containerNumber": {
+              "type": "string"
+            },
+            "houseBillOfLadingNumber": {
+              "type": "string"
+            },
+            "carrierTracking": {
+              "type": "object",
+              "properties": {
+                "trackingNumber": {
+                  "type": "string"
+                },
+                "carrierCode": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "trackingNumber"
+              ]
+            }
+          }
+        }
+      },
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {},
+          "response": {
+            "payload": {
+              "subscriptionId": "TEST_CASE_200_SUBSCRIPTION_ID",
+              "payloadVersion": "1.0",
+              "destinationId": "TEST_CASE_200_DESTINATION_ID"
+            }
+          }
+        }
+      ],
+      "source": "notifications.json"
+    },
+    "createDestination": {
+      "path": "/notifications/v1/destinations",
+      "method": "POST",
+      "parameters": [
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/CreateDestinationRequest"
+          }
+        }
+      ],
+      "definitions": {
+        "CreateDestinationRequest": {
+          "type": "object",
+          "required": [
+            "name",
+            "resourceSpecification"
+          ],
+          "properties": {
+            "resourceSpecification": {
+              "$ref": "#/definitions/DestinationResourceSpecification"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "DestinationResourceSpecification": {
+          "type": "object",
+          "properties": {
+            "sqs": {
+              "$ref": "#/definitions/SqsResource"
+            },
+            "eventBridge": {
+              "$ref": "#/definitions/EventBridgeResourceSpecification"
+            }
+          }
+        },
+        "SqsResource": {
+          "type": "object",
+          "required": [
+            "arn"
+          ],
+          "properties": {
+            "arn": {
+              "type": "string",
+              "maxLength": 1000,
+              "pattern": "^arn:aws:sqs:\\S+:\\S+:\\S+"
+            }
+          }
+        },
+        "EventBridgeResourceSpecification": {
+          "type": "object",
+          "required": [
+            "accountId",
+            "region"
+          ],
+          "properties": {
+            "region": {
+              "type": "string"
+            },
+            "accountId": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {},
+          "response": {
+            "payload": {
+              "destinationId": "TEST_CASE_200_DESTINATION_ID",
+              "resource": {
+                "sqs": {
+                  "arn": "arn:aws:sqs:us-east-2:444455556666:queue1"
+                }
+              },
+              "name": "SQSDestination"
+            }
+          }
+        }
+      ],
+      "source": "notifications.json"
+    },
+    "listFinancialEventGroups": {
+      "path": "/finances/v0/financialEventGroups",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "MaxResultsPerPage",
+          "in": "query",
+          "required": false,
+          "type": "integer",
+          "default": 10,
+          "maximum": 100,
+          "minimum": 1,
+          "format": "int32"
+        },
+        {
+          "name": "FinancialEventGroupStartedBefore",
+          "in": "query",
+          "required": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "name": "FinancialEventGroupStartedAfter",
+          "in": "query",
+          "required": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "name": "NextToken",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "definitions": {},
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {
+            "MaxResultsPerPage": 1,
+            "FinancialEventGroupStartedBefore": "2019-10-31",
+            "FinancialEventGroupStartedAfter": "2019-10-13"
+          },
+          "response": {
+            "payload": {
+              "NextToken": "3493805734095308457308475",
+              "FinancialEventGroupList": [
+                {
+                  "FinancialEventGroupId": "1",
+                  "ProcessingStatus": "PROCESSED",
+                  "FundTransferStatus": "TRANSFERED",
+                  "OriginalTotal": {
+                    "CurrencyCode": "USD",
+                    "CurrencyAmount": 10.34
+                  },
+                  "ConvertedTotal": {
+                    "CurrencyCode": "USD",
+                    "CurrencyAmount": 39.43
+                  },
+                  "FundTransferDate": "2020-02-07T14:38:42.128Z",
+                  "TraceId": "34550454504545",
+                  "AccountTail": "4854564857",
+                  "BeginningBalance": {
+                    "CurrencyCode": "USD",
+                    "CurrencyAmount": 55.33
+                  },
+                  "FinancialEventGroupStart": "2020-02-07T14:38:42.128Z",
+                  "FinancialEventGroupEnd": "2020-02-07T14:38:42.128Z"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "MaxResultsPerPage": 10
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "InvalidInput",
+                "message": "Date range is invalid."
+              }
+            ]
+          }
+        }
+      ],
+      "source": "financesV0.json"
+    },
+    "listFinancialEventsByGroupId": {
+      "path": "/finances/v0/financialEventGroups/{eventGroupId}/financialEvents",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "MaxResultsPerPage",
+          "in": "query",
+          "required": false,
+          "type": "integer",
+          "default": 100,
+          "maximum": 100,
+          "minimum": 1,
+          "format": "int32"
+        },
+        {
+          "name": "PostedAfter",
+          "in": "query",
+          "required": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "name": "PostedBefore",
+          "in": "query",
+          "required": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "name": "eventGroupId",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "NextToken",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "definitions": {},
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {
+            "MaxResultsPerPage": 10,
+            "eventGroupId": "485734534857"
+          },
+          "response": {
+            "payload": {
+              "NextToken": "Next token value",
+              "FinancialEvents": {
+                "ChargebackEventList": [
+                  {
+                    "AmazonOrderId": "444-555-3343433",
+                    "SellerOrderId": "454645645656456",
+                    "MarketplaceName": "1",
+                    "OrderChargeList": [
+                      {
+                        "ChargeType": "Tax",
+                        "ChargeAmount": {
+                          "CurrencyCode": "USD",
+                          "CurrencyAmount": 25.37
+                        }
+                      }
+                    ],
+                    "OrderChargeAdjustmentList": [
+                      {
+                        "ChargeType": "Tax",
+                        "ChargeAmount": {
+                          "CurrencyCode": "USD",
+                          "CurrencyAmount": 25.37
+                        }
+                      }
+                    ],
+                    "ShipmentFeeList": [
+                      {
+                        "FeeType": "FixedClosingFee",
+                        "FeeAmount": {
+                          "CurrencyCode": "USD",
+                          "CurrencyAmount": 25.37
+                        }
+                      }
+                    ],
+                    "ShipmentFeeAdjustmentList": [
+                      {
+                        "FeeType": "FixedClosingFee",
+                        "FeeAmount": {
+                          "CurrencyCode": "USD",
+                          "CurrencyAmount": 25.37
+                        }
+                      }
+                    ],
+                    "OrderFeeList": [
+                      {
+                        "FeeType": "FixedClosingFee",
+                        "FeeAmount": {
+                          "CurrencyCode": "USD",
+                          "CurrencyAmount": 25.37
+                        }
+                      }
+                    ],
+                    "OrderFeeAdjustmentList": [
+                      {
+                        "FeeType": "FixedClosingFee",
+                        "FeeAmount": {
+                          "CurrencyCode": "USD",
+                          "CurrencyAmount": 25.37
+                        }
+                      }
+                    ],
+                    "DirectPaymentList": [
+                      {
+                        "DirectPaymentType": "StoredValueCardRevenue",
+                        "DirectPaymentAmount": {
+                          "CurrencyCode": "USD",
+                          "CurrencyAmount": 25.37
+                        }
+                      }
+                    ],
+                    "PostedDate": "2020-02-05T13:56:00.363Z",
+                    "ShipmentItemList": [
+                      {
+                        "SellerSKU": "456454455464",
+                        "OrderItemId": "4565465645646",
+                        "OrderAdjustmentItemId": "456456465464",
+                        "QuantityShipped": 0,
+                        "ItemChargeList": [
+                          {
+                            "ChargeType": "Tax",
+                            "ChargeAmount": {
+                              "CurrencyCode": "USD",
+                              "CurrencyAmount": 25.37
+                            }
+                          }
+                        ],
+                        "ItemChargeAdjustmentList": [
+                          {
+                            "ChargeType": "Tax",
+                            "ChargeAmount": {
+                              "CurrencyCode": "USD",
+                              "CurrencyAmount": 25.37
+                            }
+                          }
+                        ],
+                        "ItemFeeList": [
+                          {
+                            "FeeType": "FixedClosingFee",
+                            "FeeAmount": {
+                              "CurrencyCode": "USD",
+                              "CurrencyAmount": 25.37
+                            }
+                          }
+                        ],
+                        "ItemFeeAdjustmentList": [
+                          {
+                            "FeeType": "FixedClosingFee",
+                            "FeeAmount": {
+                              "CurrencyCode": "USD",
+                              "CurrencyAmount": 25.37
+                            }
+                          }
+                        ],
+                        "ItemTaxWithheldList": [
+                          {
+                            "TaxCollectionModel": "Free",
+                            "TaxesWithheld": [
+                              {
+                                "ChargeType": "Tax",
+                                "ChargeAmount": {
+                                  "CurrencyCode": "USD",
+                                  "CurrencyAmount": 25.37
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "PromotionList": [
+                          {
+                            "PromotionType": "Free",
+                            "PromotionId": "546564565",
+                            "PromotionAmount": {
+                              "CurrencyCode": "USD",
+                              "CurrencyAmount": 25.37
+                            }
+                          }
+                        ],
+                        "PromotionAdjustmentList": [
+                          {
+                            "PromotionType": "Free",
+                            "PromotionId": "546564565",
+                            "PromotionAmount": {
+                              "CurrencyCode": "USD",
+                              "CurrencyAmount": 25.37
+                            }
+                          }
+                        ],
+                        "CostOfPointsGranted": {
+                          "CurrencyCode": "USD",
+                          "CurrencyAmount": 25.37
+                        },
+                        "CostOfPointsReturned": {
+                          "CurrencyCode": "USD",
+                          "CurrencyAmount": 25.37
+                        }
+                      }
+                    ],
+                    "ShipmentItemAdjustmentList": [
+                      {
+                        "SellerSKU": "456454455464",
+                        "OrderItemId": "4565465645646",
+                        "OrderAdjustmentItemId": "456456465464",
+                        "QuantityShipped": 0,
+                        "ItemChargeList": [
+                          {
+                            "ChargeType": "Tax",
+                            "ChargeAmount": {
+                              "CurrencyCode": "USD",
+                              "CurrencyAmount": 25.37
+                            }
+                          }
+                        ],
+                        "ItemChargeAdjustmentList": [
+                          {
+                            "ChargeType": "Tax",
+                            "ChargeAmount": {
+                              "CurrencyCode": "USD",
+                              "CurrencyAmount": 25.37
+                            }
+                          }
+                        ],
+                        "ItemFeeList": [
+                          {
+                            "FeeType": "FixedClosingFee",
+                            "FeeAmount": {
+                              "CurrencyCode": "USD",
+                              "CurrencyAmount": 25.37
+                            }
+                          }
+                        ],
+                        "ItemFeeAdjustmentList": [
+                          {
+                            "FeeType": "FixedClosingFee",
+                            "FeeAmount": {
+                              "CurrencyCode": "USD",
+                              "CurrencyAmount": 25.37
+                            }
+                          }
+                        ],
+                        "ItemTaxWithheldList": [
+                          {
+                            "TaxCollectionModel": "Free",
+                            "TaxesWithheld": [
+                              {
+                                "ChargeType": "Tax",
+                                "ChargeAmount": {
+                                  "CurrencyCode": "USD",
+                                  "CurrencyAmount": 25.37
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "PromotionList": [
+                          {
+                            "PromotionType": "Free",
+                            "PromotionId": "546564565",
+                            "PromotionAmount": {
+                              "CurrencyCode": "USD",
+                              "CurrencyAmount": 25.37
+                            }
+                          }
+                        ],
+                        "PromotionAdjustmentList": [
+                          {
+                            "PromotionType": "Free",
+                            "PromotionId": "546564565",
+                            "PromotionAmount": {
+                              "CurrencyCode": "USD",
+                              "CurrencyAmount": 25.37
+                            }
+                          }
+                        ],
+                        "CostOfPointsGranted": {
+                          "CurrencyCode": "USD",
+                          "CurrencyAmount": 25.37
+                        },
+                        "CostOfPointsReturned": {
+                          "CurrencyCode": "USD",
+                          "CurrencyAmount": 25.37
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "ImagingServicesFeeEventList": [
+                  {
+                    "ImagingRequestBillingItemID": "456456456",
+                    "ASIN": "4564565456456546456",
+                    "PostedDate": "2020-02-05T13:56:00.363Z",
+                    "FeeList": [
+                      {
+                        "FeeType": "FixedClosingFee",
+                        "FeeAmount": {
+                          "CurrencyCode": "USD",
+                          "CurrencyAmount": 25.37
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "NetworkComminglingTransactionEventList": [
+                  {
+                    "TransactionType": "Free",
+                    "PostedDate": "2020-02-05T13:56:00.363Z",
+                    "NetCoTransactionID": "4565645",
+                    "SwapReason": "None",
+                    "ASIN": "464567656576",
+                    "MarketplaceId": "string",
+                    "TaxExclusiveAmount": {
+                      "CurrencyCode": "USD",
+                      "CurrencyAmount": 25.37
+                    },
+                    "TaxAmount": {
+                      "CurrencyCode": "USD",
+                      "CurrencyAmount": 25.37
+                    }
+                  }
+                ],
+                "AffordabilityExpenseReversalEventList": [
+                  {
+                    "AmazonOrderId": "444-555-3343433",
+                    "PostedDate": "2020-02-05T13:56:00.363Z",
+                    "MarketplaceId": "1",
+                    "TransactionType": "Free",
+                    "BaseExpense": {
+                      "CurrencyCode": "USD",
+                      "CurrencyAmount": 25.37
+                    },
+                    "TaxTypeCGST": {
+                      "CurrencyCode": "USD",
+                      "CurrencyAmount": 25.37
+                    },
+                    "TaxTypeSGST": {
+                      "CurrencyCode": "USD",
+                      "CurrencyAmount": 25.37
+                    },
+                    "TaxTypeIGST": {
+                      "CurrencyCode": "USD",
+                      "CurrencyAmount": 25.37
+                    },
+                    "TotalExpense": {
+                      "CurrencyCode": "USD",
+                      "CurrencyAmount": 25.37
+                    }
+                  }
+                ],
+                "TrialShipmentEventList": [
+                  {
+                    "AmazonOrderId": "444-555-3343433",
+                    "FinancialEventGroupId": "1",
+                    "PostedDate": "2020-02-05T13:56:00.363Z",
+                    "SKU": "456454455464",
+                    "FeeList": [
+                      {
+                        "FeeType": "FixedClosingFee",
+                        "FeeAmount": {
+                          "CurrencyCode": "USD",
+                          "CurrencyAmount": 25.37
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "TaxWithholdingEventList": [
+                  {
+                    "PostedDate": "2020-02-05T13:56:00.363Z",
+                    "BaseAmount": {
+                      "CurrencyCode": "USD",
+                      "CurrencyAmount": 25.37
+                    },
+                    "WithheldAmount": {
+                      "CurrencyCode": "USD",
+                      "CurrencyAmount": 25.37
+                    },
+                    "TaxWithholdingPeriod": {
+                      "StartDate": "2020-02-05T13:56:00.363Z",
+                      "EndDate": "2020-02-05T13:56:00.363Z"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "eventGroupId": "BADID"
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "InvalidInput",
+                "message": "Bad event group ID provided."
+              }
+            ]
+          }
+        }
+      ],
+      "source": "financesV0.json"
+    },
+    "getInventorySummaries": {
+      "path": "/fba/inventory/v1/summaries",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "details",
+          "in": "query",
+          "required": false,
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "granularityType",
+          "in": "query",
+          "required": true,
+          "type": "string",
+          "enum": [
+            "Marketplace"
+          ]
+        },
+        {
+          "name": "granularityId",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "startDateTime",
+          "in": "query",
+          "required": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "name": "sellerSkus",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 50
+        },
+        {
+          "name": "sellerSku",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "nextToken",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "marketplaceIds",
+          "in": "query",
+          "required": true,
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 1
+        }
+      ],
+      "definitions": {},
+      "cases": [],
+      "source": "fbaInventory.json"
+    },
+    "createReport": {
+      "path": "/reports/2021-06-30/reports",
+      "method": "POST",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/CreateReportSpecification"
+          }
+        }
+      ],
+      "definitions": {
+        "CreateReportSpecification": {
+          "type": "object",
+          "required": [
+            "marketplaceIds",
+            "reportType"
+          ],
+          "properties": {
+            "reportOptions": {
+              "$ref": "#/definitions/ReportOptions"
+            },
+            "reportType": {
+              "type": "string"
+            },
+            "dataStartTime": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "dataEndTime": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "marketplaceIds": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 25,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "ReportOptions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "cases": [
+        {
+          "status": 202,
+          "parameters": {
+            "body": {
+              "reportType": "GET_MERCHANT_LISTINGS_ALL_DATA",
+              "dataStartTime": "2024-03-10T20:11:24.000Z",
+              "marketplaceIds": [
+                "A1PA6795UKMFR9",
+                "ATVPDKIKX0DER"
+              ]
+            }
+          },
+          "response": {
+            "reportId": "ID323"
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "body": {
+              "reportType": "BAD_FEE_DISCOUNTS_REPORT",
+              "dataStartTime": "2024-03-10T20:11:24.000Z",
+              "marketplaceIds": [
+                "A1PA6795UKMFR9",
+                "ATVPDKIKX0DER"
+              ]
+            }
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "400",
+                "message": "Invalid input",
+                "details": "Invalid input"
+              }
+            ]
+          }
+        }
+      ],
+      "source": "reports_2021-06-30.json"
+    },
+    "getReport": {
+      "path": "/reports/2021-06-30/reports/{reportId}",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "reportId",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "definitions": {},
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {
+            "reportId": "ID323"
+          },
+          "response": {
+            "reportId": "ReportId1",
+            "reportType": "FEE_DISCOUNTS_REPORT",
+            "dataStartTime": "2024-03-11T13:47:20.677Z",
+            "dataEndTime": "2024-03-12T13:47:20.677Z",
+            "createdTime": "2024-03-10T13:47:20.677Z",
+            "processingStatus": "IN_PROGRESS",
+            "processingStartTime": "2024-03-10T13:47:20.677Z",
+            "processingEndTime": "2024-03-12T13:47:20.677Z"
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "reportId": "badReportId1"
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "400",
+                "message": "Invalid input",
+                "details": "Invalid input"
+              }
+            ]
+          }
+        }
+      ],
+      "source": "reports_2021-06-30.json"
+    },
+    "getReportDocument": {
+      "path": "/reports/2021-06-30/documents/{reportDocumentId}",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "reportDocumentId",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "enableContentEncodingUrlHeader",
+          "in": "query",
+          "required": false,
+          "type": "boolean"
+        }
+      ],
+      "definitions": {},
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {
+            "reportDocumentId": "0356cf79-b8b0-4226-b4b9-0ee058ea5760"
+          },
+          "response": {
+            "reportDocumentId": "0356cf79-b8b0-4226-b4b9-0ee058ea5760",
+            "url": "https://d34o8swod1owfl.cloudfront.net/Report_47700__GET_MERCHANT_LISTINGS_ALL_DATA_.txt"
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "reportDocumentId": "badDocumentId1"
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "400",
+                "message": "Invalid input",
+                "details": "Invalid input"
+              }
+            ]
+          }
+        }
+      ],
+      "source": "reports_2021-06-30.json"
+    },
+    "getEligibleShipmentServices": {
+      "path": "/mfn/v0/eligibleShippingServices",
+      "method": "POST",
+      "parameters": [
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/GetEligibleShipmentServicesRequest"
+          }
+        }
+      ],
+      "definitions": {
+        "GetEligibleShipmentServicesRequest": {
+          "type": "object",
+          "required": [
+            "ShipmentRequestDetails"
+          ],
+          "properties": {
+            "ShipmentRequestDetails": {
+              "$ref": "#/definitions/ShipmentRequestDetails"
+            },
+            "ShippingOfferingFilter": {
+              "$ref": "#/definitions/ShippingOfferingFilter"
+            }
+          }
+        },
+        "ShipmentRequestDetails": {
+          "type": "object",
+          "required": [
+            "AmazonOrderId",
+            "ItemList",
+            "PackageDimensions",
+            "ShipFromAddress",
+            "ShippingServiceOptions",
+            "Weight"
+          ],
+          "properties": {
+            "AmazonOrderId": {
+              "$ref": "#/definitions/AmazonOrderId"
+            },
+            "SellerOrderId": {
+              "$ref": "#/definitions/SellerOrderId"
+            },
+            "ItemList": {
+              "$ref": "#/definitions/ItemList"
+            },
+            "ShipFromAddress": {
+              "$ref": "#/definitions/Address"
+            },
+            "PackageDimensions": {
+              "$ref": "#/definitions/PackageDimensions"
+            },
+            "Weight": {
+              "$ref": "#/definitions/Weight"
+            },
+            "MustArriveByDate": {
+              "$ref": "#/definitions/Timestamp"
+            },
+            "ShipDate": {
+              "$ref": "#/definitions/Timestamp"
+            },
+            "ShippingServiceOptions": {
+              "$ref": "#/definitions/ShippingServiceOptions"
+            },
+            "LabelCustomization": {
+              "$ref": "#/definitions/LabelCustomization"
+            }
+          }
+        },
+        "AmazonOrderId": {
+          "type": "string"
+        },
+        "SellerOrderId": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "ItemList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          }
+        },
+        "Item": {
+          "type": "object",
+          "required": [
+            "OrderItemId",
+            "Quantity"
+          ],
+          "properties": {
+            "OrderItemId": {
+              "$ref": "#/definitions/OrderItemId"
+            },
+            "Quantity": {
+              "$ref": "#/definitions/ItemQuantity"
+            },
+            "ItemWeight": {
+              "$ref": "#/definitions/Weight"
+            },
+            "ItemDescription": {
+              "$ref": "#/definitions/ItemDescription"
+            },
+            "TransparencyCodeList": {
+              "$ref": "#/definitions/TransparencyCodeList"
+            },
+            "ItemLevelSellerInputsList": {
+              "$ref": "#/definitions/AdditionalSellerInputsList"
+            },
+            "LiquidVolume": {
+              "$ref": "#/definitions/LiquidVolume"
+            },
+            "IsHazmat": {
+              "type": "boolean"
+            },
+            "DangerousGoodsDetails": {
+              "$ref": "#/definitions/DangerousGoodsDetails"
+            }
+          }
+        },
+        "OrderItemId": {
+          "type": "string"
+        },
+        "ItemQuantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Weight": {
+          "type": "object",
+          "required": [
+            "Unit",
+            "Value"
+          ],
+          "properties": {
+            "Value": {
+              "$ref": "#/definitions/WeightValue"
+            },
+            "Unit": {
+              "$ref": "#/definitions/UnitOfWeight"
+            }
+          }
+        },
+        "WeightValue": {
+          "type": "number",
+          "format": "double"
+        },
+        "UnitOfWeight": {
+          "type": "string",
+          "enum": [
+            "oz",
+            "g"
+          ]
+        },
+        "ItemDescription": {
+          "type": "string"
+        },
+        "TransparencyCodeList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransparencyCode"
+          }
+        },
+        "TransparencyCode": {
+          "type": "string"
+        },
+        "AdditionalSellerInputsList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdditionalSellerInputs"
+          }
+        },
+        "AdditionalSellerInputs": {
+          "type": "object",
+          "required": [
+            "AdditionalInputFieldName",
+            "AdditionalSellerInput"
+          ],
+          "properties": {
+            "AdditionalInputFieldName": {
+              "type": "string"
+            },
+            "AdditionalSellerInput": {
+              "$ref": "#/definitions/AdditionalSellerInput"
+            }
+          }
+        },
+        "AdditionalSellerInput": {
+          "type": "object",
+          "properties": {
+            "DataType": {
+              "type": "string"
+            },
+            "ValueAsString": {
+              "type": "string"
+            },
+            "ValueAsBoolean": {
+              "type": "boolean"
+            },
+            "ValueAsInteger": {
+              "type": "integer"
+            },
+            "ValueAsTimestamp": {
+              "$ref": "#/definitions/Timestamp"
+            },
+            "ValueAsAddress": {
+              "$ref": "#/definitions/Address"
+            },
+            "ValueAsWeight": {
+              "$ref": "#/definitions/Weight"
+            },
+            "ValueAsDimension": {
+              "$ref": "#/definitions/Length"
+            },
+            "ValueAsCurrency": {
+              "$ref": "#/definitions/CurrencyAmount"
+            }
+          }
+        },
+        "Timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Address": {
+          "type": "object",
+          "required": [
+            "AddressLine1",
+            "City",
+            "CountryCode",
+            "Email",
+            "Name",
+            "Phone",
+            "PostalCode"
+          ],
+          "properties": {
+            "Name": {
+              "$ref": "#/definitions/AddressName"
+            },
+            "AddressLine1": {
+              "$ref": "#/definitions/AddressLine1"
+            },
+            "AddressLine2": {
+              "$ref": "#/definitions/AddressLine2"
+            },
+            "AddressLine3": {
+              "$ref": "#/definitions/AddressLine3"
+            },
+            "DistrictOrCounty": {
+              "$ref": "#/definitions/DistrictOrCounty"
+            },
+            "Email": {
+              "$ref": "#/definitions/EmailAddress"
+            },
+            "City": {
+              "$ref": "#/definitions/City"
+            },
+            "StateOrProvinceCode": {
+              "$ref": "#/definitions/StateOrProvinceCode"
+            },
+            "PostalCode": {
+              "$ref": "#/definitions/PostalCode"
+            },
+            "CountryCode": {
+              "$ref": "#/definitions/CountryCode"
+            },
+            "Phone": {
+              "$ref": "#/definitions/PhoneNumber"
+            }
+          }
+        },
+        "AddressName": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "AddressLine1": {
+          "type": "string",
+          "maxLength": 180
+        },
+        "AddressLine2": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "AddressLine3": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "DistrictOrCounty": {
+          "type": "string"
+        },
+        "EmailAddress": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "StateOrProvinceCode": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "PostalCode": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "CountryCode": {
+          "type": "string"
+        },
+        "PhoneNumber": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "Length": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "$ref": "#/definitions/UnitOfLength"
+            }
+          }
+        },
+        "UnitOfLength": {
+          "type": "string",
+          "enum": [
+            "inches",
+            "centimeters"
+          ]
+        },
+        "CurrencyAmount": {
+          "type": "object",
+          "required": [
+            "Amount",
+            "CurrencyCode"
+          ],
+          "properties": {
+            "CurrencyCode": {
+              "type": "string",
+              "maxLength": 3
+            },
+            "Amount": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        },
+        "LiquidVolume": {
+          "type": "object",
+          "required": [
+            "Unit",
+            "Value"
+          ],
+          "properties": {
+            "Unit": {
+              "type": "string",
+              "enum": [
+                "ML",
+                "L",
+                "FL_OZ",
+                "GAL",
+                "PT",
+                "QT",
+                "C"
+              ]
+            },
+            "Value": {
+              "type": "number"
+            }
+          }
+        },
+        "DangerousGoodsDetails": {
+          "type": "object",
+          "properties": {
+            "UnitedNationsRegulatoryId": {
+              "type": "string",
+              "pattern": "^(UN|ID|NA)[0-9]{4}$"
+            },
+            "TransportationRegulatoryClass": {
+              "type": "string",
+              "pattern": "^[1-9](\\.[1-9])?$"
+            },
+            "PackingGroup": {
+              "type": "string",
+              "enum": [
+                "I",
+                "II",
+                "III"
+              ]
+            },
+            "PackingInstruction": {
+              "type": "string",
+              "enum": [
+                "PI965_SECTION_IA",
+                "PI965_SECTION_IB",
+                "PI965_SECTION_II",
+                "PI966_SECTION_I",
+                "PI966_SECTION_II",
+                "PI967_SECTION_I",
+                "PI967_SECTION_II",
+                "PI968_SECTION_IA",
+                "PI968_SECTION_IB",
+                "PI969_SECTION_I",
+                "PI969_SECTION_II",
+                "PI970_SECTION_I",
+                "PI970_SECTION_II"
+              ]
+            }
+          }
+        },
+        "PackageDimensions": {
+          "type": "object",
+          "properties": {
+            "Length": {
+              "$ref": "#/definitions/PackageDimension"
+            },
+            "Width": {
+              "$ref": "#/definitions/PackageDimension"
+            },
+            "Height": {
+              "$ref": "#/definitions/PackageDimension"
+            },
+            "Unit": {
+              "$ref": "#/definitions/UnitOfLength"
+            },
+            "PredefinedPackageDimensions": {
+              "$ref": "#/definitions/PredefinedPackageDimensions"
+            }
+          }
+        },
+        "PackageDimension": {
+          "type": "number",
+          "format": "double"
+        },
+        "PredefinedPackageDimensions": {
+          "type": "string",
+          "enum": [
+            "FedEx_Box_10kg",
+            "FedEx_Box_25kg",
+            "FedEx_Box_Extra_Large_1",
+            "FedEx_Box_Extra_Large_2",
+            "FedEx_Box_Large_1",
+            "FedEx_Box_Large_2",
+            "FedEx_Box_Medium_1",
+            "FedEx_Box_Medium_2",
+            "FedEx_Box_Small_1",
+            "FedEx_Box_Small_2",
+            "FedEx_Envelope",
+            "FedEx_Padded_Pak",
+            "FedEx_Pak_1",
+            "FedEx_Pak_2",
+            "FedEx_Tube",
+            "FedEx_XL_Pak",
+            "UPS_Box_10kg",
+            "UPS_Box_25kg",
+            "UPS_Express_Box",
+            "UPS_Express_Box_Large",
+            "UPS_Express_Box_Medium",
+            "UPS_Express_Box_Small",
+            "UPS_Express_Envelope",
+            "UPS_Express_Hard_Pak",
+            "UPS_Express_Legal_Envelope",
+            "UPS_Express_Pak",
+            "UPS_Express_Tube",
+            "UPS_Laboratory_Pak",
+            "UPS_Pad_Pak",
+            "UPS_Pallet",
+            "USPS_Card",
+            "USPS_Flat",
+            "USPS_FlatRateCardboardEnvelope",
+            "USPS_FlatRateEnvelope",
+            "USPS_FlatRateGiftCardEnvelope",
+            "USPS_FlatRateLegalEnvelope",
+            "USPS_FlatRatePaddedEnvelope",
+            "USPS_FlatRateWindowEnvelope",
+            "USPS_LargeFlatRateBoardGameBox",
+            "USPS_LargeFlatRateBox",
+            "USPS_Letter",
+            "USPS_MediumFlatRateBox1",
+            "USPS_MediumFlatRateBox2",
+            "USPS_RegionalRateBoxA1",
+            "USPS_RegionalRateBoxA2",
+            "USPS_RegionalRateBoxB1",
+            "USPS_RegionalRateBoxB2",
+            "USPS_RegionalRateBoxC",
+            "USPS_SmallFlatRateBox",
+            "USPS_SmallFlatRateEnvelope"
+          ]
+        },
+        "ShippingServiceOptions": {
+          "type": "object",
+          "required": [
+            "CarrierWillPickUp",
+            "DeliveryExperience"
+          ],
+          "properties": {
+            "DeliveryExperience": {
+              "$ref": "#/definitions/DeliveryExperienceType"
+            },
+            "DeclaredValue": {
+              "$ref": "#/definitions/CurrencyAmount"
+            },
+            "CarrierWillPickUp": {
+              "type": "boolean"
+            },
+            "CarrierWillPickUpOption": {
+              "$ref": "#/definitions/CarrierWillPickUpOption"
+            },
+            "LabelFormat": {
+              "$ref": "#/definitions/LabelFormat"
+            }
+          }
+        },
+        "DeliveryExperienceType": {
+          "type": "string",
+          "enum": [
+            "DeliveryConfirmationWithAdultSignature",
+            "DeliveryConfirmationWithSignature",
+            "DeliveryConfirmationWithoutSignature",
+            "NoTracking"
+          ]
+        },
+        "CarrierWillPickUpOption": {
+          "type": "string",
+          "enum": [
+            "CarrierWillPickUp",
+            "ShipperWillDropOff",
+            "NoPreference"
+          ]
+        },
+        "LabelFormat": {
+          "type": "string",
+          "enum": [
+            "PDF",
+            "PNG",
+            "ZPL203",
+            "ZPL300",
+            "ShippingServiceDefault"
+          ]
+        },
+        "LabelCustomization": {
+          "type": "object",
+          "properties": {
+            "CustomTextForLabel": {
+              "$ref": "#/definitions/CustomTextForLabel"
+            },
+            "StandardIdForLabel": {
+              "$ref": "#/definitions/StandardIdForLabel"
+            }
+          }
+        },
+        "CustomTextForLabel": {
+          "type": "string",
+          "maxLength": 14
+        },
+        "StandardIdForLabel": {
+          "type": "string",
+          "enum": [
+            "AmazonOrderId"
+          ]
+        },
+        "ShippingOfferingFilter": {
+          "type": "object",
+          "properties": {
+            "IncludePackingSlipWithLabel": {
+              "type": "boolean"
+            },
+            "IncludeComplexShippingOptions": {
+              "type": "boolean"
+            },
+            "CarrierWillPickUp": {
+              "$ref": "#/definitions/CarrierWillPickUpOption"
+            },
+            "DeliveryExperience": {
+              "$ref": "#/definitions/DeliveryExperienceOption"
+            }
+          }
+        },
+        "DeliveryExperienceOption": {
+          "type": "string",
+          "enum": [
+            "DeliveryConfirmationWithAdultSignature",
+            "DeliveryConfirmationWithSignature",
+            "DeliveryConfirmationWithoutSignature",
+            "NoTracking",
+            "NoPreference"
+          ]
+        }
+      },
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {
+            "body": {
+              "ShipmentRequestDetails": {
+                "AmazonOrderId": "903-5563053-5647845",
+                "ItemList": [
+                  {
+                    "OrderItemId": "52986411826454",
+                    "Quantity": 1
+                  }
+                ],
+                "ShipFromAddress": {
+                  "Name": "John Doe",
+                  "AddressLine1": "300 Turnbull Ave",
+                  "Email": "jdoeasdfllkj@yahoo.com",
+                  "City": "Detroit",
+                  "StateOrProvinceCode": "MI",
+                  "PostalCode": "48123",
+                  "CountryCode": "US",
+                  "Phone": "7132341234"
+                },
+                "PackageDimensions": {
+                  "Length": 10.25,
+                  "Width": 10.25,
+                  "Height": 10.25,
+                  "Unit": "inches"
+                },
+                "Weight": {
+                  "Value": 10.25,
+                  "Unit": "oz"
+                },
+                "ShippingServiceOptions": {
+                  "DeliveryExperience": "NoTracking",
+                  "CarrierWillPickUp": false,
+                  "CarrierWillPickUpOption": "ShipperWillDropOff"
+                }
+              }
+            }
+          },
+          "response": {
+            "payload": {
+              "ShippingServiceList": [
+                {
+                  "ShippingServiceName": "UPS 2nd Day Air\u00ae",
+                  "CarrierName": "UPS\u00ae",
+                  "ShippingServiceId": "UPS_PTP_2ND_DAY_AIR",
+                  "ShippingServiceOfferId": "WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKoZAReW8oJ1SMumuBS8lA/Hjuglhyiu0+KRLvyJxFV0PB9YFMDhygs3VyTL0WGYkGxiuRkmuEvpqldUn9rrkWVodqnR4vx2VtXvtER/Ju6RqYoddJZGy6RS2KLzzhQ2NclN0NYXMZVqpOe5RsRBddXaGuJr7oza3M52+JzChocAHzcurIhCRynpbxfmNLzZMQEbgnpGLzuaoSMzfxg90/NaXFR/Ou01du/uKd5AbfMW/AxAKP9ht6Oi9lDHq6WkGqvjkVLW0/jj/fBgblIwcs+t",
+                  "ShipDate": "2019-10-28T16:36:36Z",
+                  "EarliestEstimatedDeliveryDate": "2019-10-31T06:00:00Z",
+                  "LatestEstimatedDeliveryDate": "2019-10-31T06:00:00Z",
+                  "Rate": {
+                    "CurrencyCode": "USD",
+                    "Amount": 34.73
+                  },
+                  "RateWithAdjustments": {
+                    "CurrencyCode": "USD",
+                    "Amount": 33.73
+                  },
+                  "AdjustmentItemList": [
+                    {
+                      "RateItemID": "FBM_SHIP_PLUS_CREDIT",
+                      "RateItemType": "INCLUDED",
+                      "RateItemCharge": {
+                        "CurrencyCode": "USD",
+                        "Amount": 1.0
+                      },
+                      "RateItemNameLocalization": "FBM Ship Plus Credit"
+                    }
+                  ],
+                  "ShippingServiceOptions": {
+                    "DeliveryExperience": "NoTracking",
+                    "CarrierWillPickUp": false,
+                    "LabelFormat": ""
+                  },
+                  "AvailableLabelFormats": [
+                    "ZPL203",
+                    "ShippingServiceDefault",
+                    "PDF",
+                    "PNG"
+                  ],
+                  "AvailableFormatOptionsForLabel": [
+                    {
+                      "LabelFormat": "ZPL203"
+                    },
+                    {
+                      "LabelFormat": "ShippingServiceDefault"
+                    },
+                    {
+                      "LabelFormat": "PDF"
+                    },
+                    {
+                      "LabelFormat": "PNG"
+                    }
+                  ],
+                  "RequiresAdditionalSellerInputs": true,
+                  "Benefits": {
+                    "IncludedBenefits": [
+                      "CLAIMS_PROTECTED",
+                      "FBM_SHIP_PLUS"
+                    ],
+                    "ExcludedBenefits": []
+                  }
+                },
+                {
+                  "ShippingServiceName": "UPS Next Day Air Saver\u00ae",
+                  "CarrierName": "UPS\u00ae",
+                  "ShippingServiceId": "UPS_PTP_NEXT_DAY_AIR_SAVER",
+                  "ShippingServiceOfferId": "WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKqqhKGQ2YZmuxsXKVXmdgdWNvfxb1qfm5bGm8NuqlqnNT3eTiJ4viTctepggbeUKUSykClJ+Qmw43zdA8wsgREhQCmb4Bbo/skapLQS1F9uwH2FgY5SfMsj/egudyocpVRT45KSQAT0H5YiXW3OyyRAae9fZ0RzDJAABHiisOyYyXnB1mtWOZqc7rlGR4yyqN7jmiT4t8dmuGPX7ptY4qskrN+6VHZO9bM9tdDS0ysHhAVv4jO3Q5sWFg4nEPaARWSsrpa6zSGMLxAOj56O3tcP",
+                  "ShipDate": "2019-10-28T16:36:36Z",
+                  "EarliestEstimatedDeliveryDate": "2019-10-30T06:00:00Z",
+                  "LatestEstimatedDeliveryDate": "2019-10-30T06:00:00Z",
+                  "Rate": {
+                    "CurrencyCode": "USD",
+                    "Amount": 98.75
+                  },
+                  "RateWithAdjustments": {
+                    "CurrencyCode": "USD",
+                    "Amount": 98.75
+                  },
+                  "ShippingServiceOptions": {
+                    "DeliveryExperience": "NoTracking",
+                    "CarrierWillPickUp": false,
+                    "LabelFormat": ""
+                  },
+                  "AvailableLabelFormats": [
+                    "ZPL203",
+                    "ShippingServiceDefault",
+                    "PDF",
+                    "PNG"
+                  ],
+                  "AvailableFormatOptionsForLabel": [
+                    {
+                      "LabelFormat": "ZPL203"
+                    },
+                    {
+                      "LabelFormat": "ShippingServiceDefault"
+                    },
+                    {
+                      "LabelFormat": "PDF"
+                    },
+                    {
+                      "LabelFormat": "PNG"
+                    }
+                  ],
+                  "RequiresAdditionalSellerInputs": true,
+                  "Benefits": {
+                    "IncludedBenefits": [],
+                    "ExcludedBenefits": [
+                      {
+                        "Benefit": "CLAIMS_PROTECTED",
+                        "ReasonCodes": [
+                          "LATE_DELIVERY_RISK"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "TemporarilyUnavailableCarrierList": [
+                {
+                  "CarrierName": "UPS\u00ae"
+                },
+                {
+                  "CarrierName": "DHLECOMMERCE"
+                }
+              ],
+              "TermsAndConditionsNotAcceptedCarrierList": [
+                {
+                  "CarrierName": "YANWEN"
+                },
+                {
+                  "CarrierName": "CHINA_POST"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "body": {
+              "ShipmentRequestDetails": {
+                "AmazonOrderId": "TEST_CASE_400",
+                "ItemList": [
+                  {
+                    "OrderItemId": "52986411826454",
+                    "Quantity": 1
+                  }
+                ],
+                "ShipFromAddress": {
+                  "Name": "John Doe",
+                  "AddressLine1": "300 Turnbull Ave",
+                  "Email": "jdoeasdfllkj@yahoo.com",
+                  "City": "Detroit",
+                  "StateOrProvinceCode": "MI",
+                  "PostalCode": "48123",
+                  "CountryCode": "USA",
+                  "Phone": "7132341234"
+                },
+                "PackageDimensions": {
+                  "Length": 10.25,
+                  "Width": 10.25,
+                  "Height": 10.25,
+                  "Unit": "inches"
+                },
+                "Weight": {
+                  "Value": 10.25,
+                  "Unit": "oz"
+                },
+                "ShippingServiceOptions": {
+                  "DeliveryExperience": "NoTracking",
+                  "CarrierWillPickUp": false,
+                  "CarrierWillPickUpOption": "ShipperWillDropOff"
+                }
+              }
+            }
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "InvalidInput",
+                "message": "1 validation error detected: Value 'USA' at 'shipmentRequestDetails.shipFromAddress.countryCode' failed to satisfy constraint: Member must have length less than or equal to 2",
+                "details": ""
+              }
+            ]
+          }
+        }
+      ],
+      "source": "merchantFulfillmentV0.json"
+    },
+    "createShipment": {
+      "path": "/mfn/v0/shipments",
+      "method": "POST",
+      "parameters": [
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/CreateShipmentRequest"
+          }
+        }
+      ],
+      "definitions": {
+        "CreateShipmentRequest": {
+          "type": "object",
+          "required": [
+            "ShipmentRequestDetails",
+            "ShippingServiceId"
+          ],
+          "properties": {
+            "ShipmentRequestDetails": {
+              "$ref": "#/definitions/ShipmentRequestDetails"
+            },
+            "ShippingServiceId": {
+              "$ref": "#/definitions/ShippingServiceIdentifier"
+            },
+            "ShippingServiceOfferId": {
+              "type": "string"
+            },
+            "HazmatType": {
+              "$ref": "#/definitions/HazmatType"
+            },
+            "LabelFormatOption": {
+              "$ref": "#/definitions/LabelFormatOptionRequest"
+            },
+            "ShipmentLevelSellerInputsList": {
+              "$ref": "#/definitions/AdditionalSellerInputsList"
+            }
+          }
+        },
+        "ShipmentRequestDetails": {
+          "type": "object",
+          "required": [
+            "AmazonOrderId",
+            "ItemList",
+            "PackageDimensions",
+            "ShipFromAddress",
+            "ShippingServiceOptions",
+            "Weight"
+          ],
+          "properties": {
+            "AmazonOrderId": {
+              "$ref": "#/definitions/AmazonOrderId"
+            },
+            "SellerOrderId": {
+              "$ref": "#/definitions/SellerOrderId"
+            },
+            "ItemList": {
+              "$ref": "#/definitions/ItemList"
+            },
+            "ShipFromAddress": {
+              "$ref": "#/definitions/Address"
+            },
+            "PackageDimensions": {
+              "$ref": "#/definitions/PackageDimensions"
+            },
+            "Weight": {
+              "$ref": "#/definitions/Weight"
+            },
+            "MustArriveByDate": {
+              "$ref": "#/definitions/Timestamp"
+            },
+            "ShipDate": {
+              "$ref": "#/definitions/Timestamp"
+            },
+            "ShippingServiceOptions": {
+              "$ref": "#/definitions/ShippingServiceOptions"
+            },
+            "LabelCustomization": {
+              "$ref": "#/definitions/LabelCustomization"
+            }
+          }
+        },
+        "AmazonOrderId": {
+          "type": "string"
+        },
+        "SellerOrderId": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "ItemList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          }
+        },
+        "Item": {
+          "type": "object",
+          "required": [
+            "OrderItemId",
+            "Quantity"
+          ],
+          "properties": {
+            "OrderItemId": {
+              "$ref": "#/definitions/OrderItemId"
+            },
+            "Quantity": {
+              "$ref": "#/definitions/ItemQuantity"
+            },
+            "ItemWeight": {
+              "$ref": "#/definitions/Weight"
+            },
+            "ItemDescription": {
+              "$ref": "#/definitions/ItemDescription"
+            },
+            "TransparencyCodeList": {
+              "$ref": "#/definitions/TransparencyCodeList"
+            },
+            "ItemLevelSellerInputsList": {
+              "$ref": "#/definitions/AdditionalSellerInputsList"
+            },
+            "LiquidVolume": {
+              "$ref": "#/definitions/LiquidVolume"
+            },
+            "IsHazmat": {
+              "type": "boolean"
+            },
+            "DangerousGoodsDetails": {
+              "$ref": "#/definitions/DangerousGoodsDetails"
+            }
+          }
+        },
+        "OrderItemId": {
+          "type": "string"
+        },
+        "ItemQuantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Weight": {
+          "type": "object",
+          "required": [
+            "Unit",
+            "Value"
+          ],
+          "properties": {
+            "Value": {
+              "$ref": "#/definitions/WeightValue"
+            },
+            "Unit": {
+              "$ref": "#/definitions/UnitOfWeight"
+            }
+          }
+        },
+        "WeightValue": {
+          "type": "number",
+          "format": "double"
+        },
+        "UnitOfWeight": {
+          "type": "string",
+          "enum": [
+            "oz",
+            "g"
+          ]
+        },
+        "ItemDescription": {
+          "type": "string"
+        },
+        "TransparencyCodeList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransparencyCode"
+          }
+        },
+        "TransparencyCode": {
+          "type": "string"
+        },
+        "AdditionalSellerInputsList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdditionalSellerInputs"
+          }
+        },
+        "AdditionalSellerInputs": {
+          "type": "object",
+          "required": [
+            "AdditionalInputFieldName",
+            "AdditionalSellerInput"
+          ],
+          "properties": {
+            "AdditionalInputFieldName": {
+              "type": "string"
+            },
+            "AdditionalSellerInput": {
+              "$ref": "#/definitions/AdditionalSellerInput"
+            }
+          }
+        },
+        "AdditionalSellerInput": {
+          "type": "object",
+          "properties": {
+            "DataType": {
+              "type": "string"
+            },
+            "ValueAsString": {
+              "type": "string"
+            },
+            "ValueAsBoolean": {
+              "type": "boolean"
+            },
+            "ValueAsInteger": {
+              "type": "integer"
+            },
+            "ValueAsTimestamp": {
+              "$ref": "#/definitions/Timestamp"
+            },
+            "ValueAsAddress": {
+              "$ref": "#/definitions/Address"
+            },
+            "ValueAsWeight": {
+              "$ref": "#/definitions/Weight"
+            },
+            "ValueAsDimension": {
+              "$ref": "#/definitions/Length"
+            },
+            "ValueAsCurrency": {
+              "$ref": "#/definitions/CurrencyAmount"
+            }
+          }
+        },
+        "Timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Address": {
+          "type": "object",
+          "required": [
+            "AddressLine1",
+            "City",
+            "CountryCode",
+            "Email",
+            "Name",
+            "Phone",
+            "PostalCode"
+          ],
+          "properties": {
+            "Name": {
+              "$ref": "#/definitions/AddressName"
+            },
+            "AddressLine1": {
+              "$ref": "#/definitions/AddressLine1"
+            },
+            "AddressLine2": {
+              "$ref": "#/definitions/AddressLine2"
+            },
+            "AddressLine3": {
+              "$ref": "#/definitions/AddressLine3"
+            },
+            "DistrictOrCounty": {
+              "$ref": "#/definitions/DistrictOrCounty"
+            },
+            "Email": {
+              "$ref": "#/definitions/EmailAddress"
+            },
+            "City": {
+              "$ref": "#/definitions/City"
+            },
+            "StateOrProvinceCode": {
+              "$ref": "#/definitions/StateOrProvinceCode"
+            },
+            "PostalCode": {
+              "$ref": "#/definitions/PostalCode"
+            },
+            "CountryCode": {
+              "$ref": "#/definitions/CountryCode"
+            },
+            "Phone": {
+              "$ref": "#/definitions/PhoneNumber"
+            }
+          }
+        },
+        "AddressName": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "AddressLine1": {
+          "type": "string",
+          "maxLength": 180
+        },
+        "AddressLine2": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "AddressLine3": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "DistrictOrCounty": {
+          "type": "string"
+        },
+        "EmailAddress": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "StateOrProvinceCode": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "PostalCode": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "CountryCode": {
+          "type": "string"
+        },
+        "PhoneNumber": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "Length": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "$ref": "#/definitions/UnitOfLength"
+            }
+          }
+        },
+        "UnitOfLength": {
+          "type": "string",
+          "enum": [
+            "inches",
+            "centimeters"
+          ]
+        },
+        "CurrencyAmount": {
+          "type": "object",
+          "required": [
+            "Amount",
+            "CurrencyCode"
+          ],
+          "properties": {
+            "CurrencyCode": {
+              "type": "string",
+              "maxLength": 3
+            },
+            "Amount": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        },
+        "LiquidVolume": {
+          "type": "object",
+          "required": [
+            "Unit",
+            "Value"
+          ],
+          "properties": {
+            "Unit": {
+              "type": "string",
+              "enum": [
+                "ML",
+                "L",
+                "FL_OZ",
+                "GAL",
+                "PT",
+                "QT",
+                "C"
+              ]
+            },
+            "Value": {
+              "type": "number"
+            }
+          }
+        },
+        "DangerousGoodsDetails": {
+          "type": "object",
+          "properties": {
+            "UnitedNationsRegulatoryId": {
+              "type": "string",
+              "pattern": "^(UN|ID|NA)[0-9]{4}$"
+            },
+            "TransportationRegulatoryClass": {
+              "type": "string",
+              "pattern": "^[1-9](\\.[1-9])?$"
+            },
+            "PackingGroup": {
+              "type": "string",
+              "enum": [
+                "I",
+                "II",
+                "III"
+              ]
+            },
+            "PackingInstruction": {
+              "type": "string",
+              "enum": [
+                "PI965_SECTION_IA",
+                "PI965_SECTION_IB",
+                "PI965_SECTION_II",
+                "PI966_SECTION_I",
+                "PI966_SECTION_II",
+                "PI967_SECTION_I",
+                "PI967_SECTION_II",
+                "PI968_SECTION_IA",
+                "PI968_SECTION_IB",
+                "PI969_SECTION_I",
+                "PI969_SECTION_II",
+                "PI970_SECTION_I",
+                "PI970_SECTION_II"
+              ]
+            }
+          }
+        },
+        "PackageDimensions": {
+          "type": "object",
+          "properties": {
+            "Length": {
+              "$ref": "#/definitions/PackageDimension"
+            },
+            "Width": {
+              "$ref": "#/definitions/PackageDimension"
+            },
+            "Height": {
+              "$ref": "#/definitions/PackageDimension"
+            },
+            "Unit": {
+              "$ref": "#/definitions/UnitOfLength"
+            },
+            "PredefinedPackageDimensions": {
+              "$ref": "#/definitions/PredefinedPackageDimensions"
+            }
+          }
+        },
+        "PackageDimension": {
+          "type": "number",
+          "format": "double"
+        },
+        "PredefinedPackageDimensions": {
+          "type": "string",
+          "enum": [
+            "FedEx_Box_10kg",
+            "FedEx_Box_25kg",
+            "FedEx_Box_Extra_Large_1",
+            "FedEx_Box_Extra_Large_2",
+            "FedEx_Box_Large_1",
+            "FedEx_Box_Large_2",
+            "FedEx_Box_Medium_1",
+            "FedEx_Box_Medium_2",
+            "FedEx_Box_Small_1",
+            "FedEx_Box_Small_2",
+            "FedEx_Envelope",
+            "FedEx_Padded_Pak",
+            "FedEx_Pak_1",
+            "FedEx_Pak_2",
+            "FedEx_Tube",
+            "FedEx_XL_Pak",
+            "UPS_Box_10kg",
+            "UPS_Box_25kg",
+            "UPS_Express_Box",
+            "UPS_Express_Box_Large",
+            "UPS_Express_Box_Medium",
+            "UPS_Express_Box_Small",
+            "UPS_Express_Envelope",
+            "UPS_Express_Hard_Pak",
+            "UPS_Express_Legal_Envelope",
+            "UPS_Express_Pak",
+            "UPS_Express_Tube",
+            "UPS_Laboratory_Pak",
+            "UPS_Pad_Pak",
+            "UPS_Pallet",
+            "USPS_Card",
+            "USPS_Flat",
+            "USPS_FlatRateCardboardEnvelope",
+            "USPS_FlatRateEnvelope",
+            "USPS_FlatRateGiftCardEnvelope",
+            "USPS_FlatRateLegalEnvelope",
+            "USPS_FlatRatePaddedEnvelope",
+            "USPS_FlatRateWindowEnvelope",
+            "USPS_LargeFlatRateBoardGameBox",
+            "USPS_LargeFlatRateBox",
+            "USPS_Letter",
+            "USPS_MediumFlatRateBox1",
+            "USPS_MediumFlatRateBox2",
+            "USPS_RegionalRateBoxA1",
+            "USPS_RegionalRateBoxA2",
+            "USPS_RegionalRateBoxB1",
+            "USPS_RegionalRateBoxB2",
+            "USPS_RegionalRateBoxC",
+            "USPS_SmallFlatRateBox",
+            "USPS_SmallFlatRateEnvelope"
+          ]
+        },
+        "ShippingServiceOptions": {
+          "type": "object",
+          "required": [
+            "CarrierWillPickUp",
+            "DeliveryExperience"
+          ],
+          "properties": {
+            "DeliveryExperience": {
+              "$ref": "#/definitions/DeliveryExperienceType"
+            },
+            "DeclaredValue": {
+              "$ref": "#/definitions/CurrencyAmount"
+            },
+            "CarrierWillPickUp": {
+              "type": "boolean"
+            },
+            "CarrierWillPickUpOption": {
+              "$ref": "#/definitions/CarrierWillPickUpOption"
+            },
+            "LabelFormat": {
+              "$ref": "#/definitions/LabelFormat"
+            }
+          }
+        },
+        "DeliveryExperienceType": {
+          "type": "string",
+          "enum": [
+            "DeliveryConfirmationWithAdultSignature",
+            "DeliveryConfirmationWithSignature",
+            "DeliveryConfirmationWithoutSignature",
+            "NoTracking"
+          ]
+        },
+        "CarrierWillPickUpOption": {
+          "type": "string",
+          "enum": [
+            "CarrierWillPickUp",
+            "ShipperWillDropOff",
+            "NoPreference"
+          ]
+        },
+        "LabelFormat": {
+          "type": "string",
+          "enum": [
+            "PDF",
+            "PNG",
+            "ZPL203",
+            "ZPL300",
+            "ShippingServiceDefault"
+          ]
+        },
+        "LabelCustomization": {
+          "type": "object",
+          "properties": {
+            "CustomTextForLabel": {
+              "$ref": "#/definitions/CustomTextForLabel"
+            },
+            "StandardIdForLabel": {
+              "$ref": "#/definitions/StandardIdForLabel"
+            }
+          }
+        },
+        "CustomTextForLabel": {
+          "type": "string",
+          "maxLength": 14
+        },
+        "StandardIdForLabel": {
+          "type": "string",
+          "enum": [
+            "AmazonOrderId"
+          ]
+        },
+        "ShippingServiceIdentifier": {
+          "type": "string"
+        },
+        "HazmatType": {
+          "type": "string",
+          "enum": [
+            "None",
+            "LQHazmat"
+          ]
+        },
+        "LabelFormatOptionRequest": {
+          "type": "object",
+          "properties": {
+            "IncludePackingSlipWithLabel": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {
+            "body": {
+              "ShipmentRequestDetails": {
+                "AmazonOrderId": "903-5563053-5647845",
+                "ItemList": [
+                  {
+                    "OrderItemId": "52986411826454",
+                    "Quantity": 1
+                  }
+                ],
+                "ShipFromAddress": {
+                  "Name": "John Doe",
+                  "AddressLine1": "300 Turnbull Ave",
+                  "Email": "jdoeasdfllkj@yahoo.com",
+                  "City": "Detroit",
+                  "StateOrProvinceCode": "MI",
+                  "PostalCode": "48123",
+                  "CountryCode": "US",
+                  "Phone": "7132341234"
+                },
+                "PackageDimensions": {
+                  "Length": 10.25,
+                  "Width": 10.25,
+                  "Height": 10.25,
+                  "Unit": "inches"
+                },
+                "Weight": {
+                  "Value": 10.25,
+                  "Unit": "oz"
+                },
+                "ShippingServiceOptions": {
+                  "DeliveryExperience": "NoTracking",
+                  "CarrierWillPickUp": false,
+                  "CarrierWillPickUpOption": "ShipperWillDropOff"
+                }
+              },
+              "ShippingServiceId": "UPS_PTP_2ND_DAY_AIR",
+              "ShippingServiceOfferId": "WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKoZAReW8oJ1SMumuBS8lA/Hjuglhyiu0+KRLvyJxFV0PB9YFMDhygs3VyTL0WGYkGxiuRkmuEvpqldUn9rrkWVodqnR4vx2VtXvtER/Ju6RqYoddJZGy6RS2KLzzhQ2NclN0NYXMZVqpOe5RsRBddXaGuJr7oza3M52+JzChocAHzcurIhCRynpbxfmNLzZMQEbgnpGLzuaoSMzfxg90/NaXFR/Ou01du/uKd5AbfMW/AxAKP9ht6Oi9lDHq6WkGqvjkVLW0/jj/fBgblIwcs+t"
+            }
+          },
+          "response": {
+            "payload": {
+              "ShipmentId": "be7a0a53-00c3-4f6f-a63a-639f76ee9253",
+              "AmazonOrderId": "903-5563053-5647845",
+              "Insurance": {
+                "CurrencyCode": "USD",
+                "Amount": 0
+              },
+              "ItemList": [
+                {
+                  "OrderItemId": "12958298061782",
+                  "Quantity": 1
+                }
+              ],
+              "ShipFromAddress": {
+                "Name": "John Doe",
+                "AddressLine1": "300 Turnbull Ave",
+                "Email": "jdoeasdfllkj@yahoo.com",
+                "City": "Detroit",
+                "StateOrProvinceCode": "MI",
+                "PostalCode": "48123",
+                "CountryCode": "US",
+                "Phone": "7132341234"
+              },
+              "ShipToAddress": {
+                "Name": "New York",
+                "AddressLine1": "TIME WARNER CENTER",
+                "AddressLine2": "10 COLUMBUS CIR",
+                "Email": "",
+                "City": "NEW YORK",
+                "StateOrProvinceCode": "NY",
+                "PostalCode": "10019-1158",
+                "CountryCode": "US",
+                "Phone": ""
+              },
+              "PackageDimensions": {
+                "Length": 10.25,
+                "Width": 10.25,
+                "Height": 10.25,
+                "Unit": "inches"
+              },
+              "Weight": {
+                "Value": 10.25,
+                "Unit": "oz"
+              },
+              "ShippingService": {
+                "ShippingServiceName": "UPS 2nd Day Air\u00ae",
+                "CarrierName": "UPS\u00ae",
+                "ShippingServiceId": "UPS_PTP_2ND_DAY_AIR",
+                "ShippingServiceOfferId": "WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKoZAReW8oJ1SMumuBS8lA/Hjuglhyiu0+KRLvyJxFV0PB9YFMDhygs3VyTL0WGYkGxiuRkmuEvpqldUn9rrkWVodqnR4vx2VtXvtER/Ju6RqYoddJZGy6RS2KLzzhQ2NclN0NYXMZVqpOe5RsRBddXaGuJr7oza3M52+JzChocAHzcurIhCRynpbxfmNLzZMQEbgnpGLzuaoSMzfxg90/NaXFR/Ou01du/uKd5AbfMW/AxAKP9ht6Oi9lDHq6WkGqvjkVLW0/jj/fBgblIwcs+t",
+                "ShipDate": "2019-10-28T16:37:37Z",
+                "EarliestEstimatedDeliveryDate": "2019-10-30T07:00:00Z",
+                "LatestEstimatedDeliveryDate": "2019-10-30T07:00:00Z",
+                "Rate": {
+                  "CurrencyCode": "USD",
+                  "Amount": 34.73
+                },
+                "RateWithAdjustments": {
+                  "CurrencyCode": "USD",
+                  "Amount": 33.73
+                },
+                "AdjustmentItemList": [
+                  {
+                    "RateItemID": "FBM_SHIP_PLUS_CREDIT",
+                    "RateItemType": "INCLUDED",
+                    "RateItemCharge": {
+                      "CurrencyCode": "USD",
+                      "Amount": 1.0
+                    },
+                    "RateItemNameLocalization": "FBM Ship Plus Credit"
+                  }
+                ],
+                "ShippingServiceOptions": {
+                  "DeliveryExperience": "NoTracking",
+                  "CarrierWillPickUp": false,
+                  "DeclaredValue": {
+                    "CurrencyCode": "USD",
+                    "Amount": 0
+                  }
+                },
+                "RequiresAdditionalSellerInputs": false,
+                "Benefits": {
+                  "IncludedBenefits": [
+                    "CLAIMS_PROTECTED",
+                    "FBM_SHIP_PLUS"
+                  ],
+                  "ExcludedBenefits": []
+                }
+              },
+              "Label": {
+                "Dimensions": {
+                  "Length": 6.0,
+                  "Width": 4.0,
+                  "Unit": "inches"
+                },
+                "FileContents": {
+                  "Contents": "H4sIAAAAAAAAAOR",
+                  "FileType": "image/png",
+                  "Checksum": "d+eUxK5WTGxkGsTF0pmefQ=="
+                },
+                "LabelFormat": "PNG"
+              },
+              "Status": "Purchased",
+              "TrackingId": "1Z17E2100217295733",
+              "CreatedDate": "2019-10-28T16:37:43Z"
+            }
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "body": {
+              "ShipmentRequestDetails": {
+                "AmazonOrderId": "TEST_CASE_400",
+                "ItemList": [
+                  {
+                    "OrderItemId": "52986411826454",
+                    "Quantity": 1
+                  }
+                ],
+                "ShipFromAddress": {
+                  "Name": "John Doe",
+                  "AddressLine1": "300 Turnbull Ave",
+                  "Email": "jdoeasdfllkj@yahoo.com",
+                  "City": "Detroit",
+                  "StateOrProvinceCode": "MI",
+                  "PostalCode": "48123",
+                  "CountryCode": "USA",
+                  "Phone": "7132341234"
+                },
+                "PackageDimensions": {
+                  "Length": 10,
+                  "Width": 10,
+                  "Height": 10,
+                  "Unit": "inches"
+                },
+                "Weight": {
+                  "Value": 10,
+                  "Unit": "oz"
+                },
+                "ShippingServiceOptions": {
+                  "DeliveryExperience": "NoTracking",
+                  "CarrierWillPickUp": false,
+                  "CarrierWillPickUpOption": "ShipperWillDropOff"
+                }
+              },
+              "ShippingServiceId": "UPS_PTP_2ND_DAY_AIR",
+              "ShippingServiceOfferId": "WHgxtyn6qjGGaCzOCog1azF5HLHje5Pz3Lc2Fmt5eKoZAReW8oJ1SMumuBS8lA/Hjuglhyiu0+KRLvyJxFV0PB9YFMDhygs3VyTL0WGYkGxiuRkmuEvpqldUn9rrkWVodqnR4vx2VtXvtER/Ju6RqYoddJZGy6RS2KLzzhQ2NclN0NYXMZVqpOe5RsRBddXaGuJr7oza3M52+JzChocAHzcurIhCRynpbxfmNLzZMQEbgnpGLzuaoSMzfxg90/NaXFR/Ou01du/uKd5AbfMW/AxAKP9ht6Oi9lDHq6WkGqvjkVLW0/jj/fBgblIwcs+t"
+            }
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "InvalidInput",
+                "message": "1 validation error detected: Value 'USA' at 'shipmentRequestDetails.shipFromAddress.countryCode' failed to satisfy constraint: Member must have length less than or equal to 2",
+                "details": ""
+              }
+            ]
+          }
+        }
+      ],
+      "source": "merchantFulfillmentV0.json"
+    },
+    "patchListingsItem": {
+      "path": "/listings/2021-08-01/items/{sellerId}/{sku}",
+      "method": "PATCH",
+      "parameters": [
+        {
+          "name": "sellerId",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "sku",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "marketplaceIds",
+          "in": "query",
+          "required": true,
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "collectionFormat": "csv"
+        },
+        {
+          "name": "includedData",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "items": {
+            "enum": [
+              "identifiers",
+              "issues"
+            ],
+            "type": "string"
+          },
+          "collectionFormat": "csv",
+          "default": [
+            "issues"
+          ]
+        },
+        {
+          "name": "mode",
+          "in": "query",
+          "enum": [
+            "VALIDATION_PREVIEW"
+          ],
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "issueLocale",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/ListingsItemPatchRequest"
+          }
+        }
+      ],
+      "definitions": {
+        "ListingsItemPatchRequest": {
+          "properties": {
+            "productType": {
+              "type": "string"
+            },
+            "patches": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PatchOperation"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "productType",
+            "patches"
+          ],
+          "type": "object"
+        },
+        "PatchOperation": {
+          "properties": {
+            "op": {
+              "enum": [
+                "add",
+                "replace",
+                "merge",
+                "delete"
+              ],
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "value": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          },
+          "required": [
+            "op",
+            "path"
+          ],
+          "type": "object"
+        }
+      },
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {},
+          "response": {
+            "sku": "GM-ZDPI-9B4E",
+            "status": "ACCEPTED",
+            "submissionId": "f1dc2914-75dd-11ea-bc55-0242ac130003",
+            "issues": []
+          }
+        },
+        {
+          "status": 200,
+          "parameters": {
+            "sku": "VALIDATION_VALID",
+            "marketplaceIds": [
+              "ATVPDKIKX0DER"
+            ],
+            "includedData": [
+              "identifiers",
+              "issues"
+            ],
+            "mode": "VALIDATION_PREVIEW"
+          },
+          "response": {
+            "sku": "VALIDATION_VALID",
+            "status": "VALID",
+            "submissionId": "1edc94ea-a3d7-210b-42bc-0ec72c1384762",
+            "identifiers": [
+              {
+                "marketplaceId": "ATVPDKIKX0DER",
+                "asin": "B07N4M94X4"
+              }
+            ],
+            "issues": []
+          }
+        },
+        {
+          "status": 200,
+          "parameters": {
+            "sku": "VALIDATION_INVALID",
+            "marketplaceIds": [
+              "ATVPDKIKX0DER"
+            ],
+            "includedData": [
+              "identifiers",
+              "issues"
+            ],
+            "mode": "VALIDATION_PREVIEW"
+          },
+          "response": {
+            "sku": "VALIDATION_INVALID",
+            "status": "INVALID",
+            "submissionId": "a1c562c2-1695-11ee-be56-0242ac120002",
+            "identifiers": [],
+            "issues": [
+              {
+                "code": "90000900",
+                "message": "The attributes are invalid.",
+                "severity": "ERROR",
+                "attributeNames": [
+                  "fake_attribute"
+                ],
+                "categories": [
+                  "INVALID_ATTRIBUTE",
+                  "LISTING"
+                ],
+                "enforcements": {
+                  "actions": [
+                    {
+                      "action": "ATTRIBUTE_SUPPRESSED"
+                    }
+                  ],
+                  "exemption": {
+                    "status": "NOT_EXEMPT"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "sku": "BadSKU"
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "BAD_REQUEST",
+                "message": "Invalid input",
+                "details": "Invalid input"
+              }
+            ]
+          }
+        }
+      ],
+      "source": "listingsItems_2021-08-01.json"
+    },
+    "searchListingsItems": {
+      "path": "/listings/2021-08-01/items/{sellerId}",
+      "method": "GET",
+      "parameters": [
+        {
+          "name": "sellerId",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "marketplaceIds",
+          "in": "query",
+          "required": true,
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "collectionFormat": "csv"
+        },
+        {
+          "name": "issueLocale",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "includedData",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "items": {
+            "enum": [
+              "summaries",
+              "attributes",
+              "issues",
+              "offers",
+              "fulfillmentAvailability",
+              "procurement",
+              "relationships",
+              "productTypes"
+            ],
+            "type": "string"
+          },
+          "collectionFormat": "csv",
+          "default": [
+            "summaries"
+          ]
+        },
+        {
+          "name": "identifiers",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "string"
+          },
+          "collectionFormat": "csv"
+        },
+        {
+          "name": "identifiersType",
+          "in": "query",
+          "required": false,
+          "type": "string",
+          "enum": [
+            "ASIN",
+            "EAN",
+            "FNSKU",
+            "GTIN",
+            "ISBN",
+            "JAN",
+            "MINSAN",
+            "SKU",
+            "UPC"
+          ]
+        },
+        {
+          "name": "variationParentSku",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "packageHierarchySku",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "createdAfter",
+          "in": "query",
+          "required": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "name": "createdBefore",
+          "in": "query",
+          "required": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "name": "lastUpdatedAfter",
+          "in": "query",
+          "required": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "name": "lastUpdatedBefore",
+          "in": "query",
+          "required": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "name": "withIssueSeverity",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "items": {
+            "enum": [
+              "WARNING",
+              "ERROR"
+            ],
+            "type": "string"
+          },
+          "collectionFormat": "csv"
+        },
+        {
+          "name": "withStatus",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "items": {
+            "enum": [
+              "BUYABLE",
+              "DISCOVERABLE"
+            ],
+            "type": "string"
+          },
+          "collectionFormat": "csv"
+        },
+        {
+          "name": "withoutStatus",
+          "in": "query",
+          "required": false,
+          "type": "array",
+          "items": {
+            "enum": [
+              "BUYABLE",
+              "DISCOVERABLE"
+            ],
+            "type": "string"
+          },
+          "collectionFormat": "csv"
+        },
+        {
+          "name": "sortBy",
+          "in": "query",
+          "required": false,
+          "type": "string",
+          "enum": [
+            "sku",
+            "createdDate",
+            "lastUpdatedDate"
+          ],
+          "default": "lastUpdatedDate"
+        },
+        {
+          "name": "sortOrder",
+          "in": "query",
+          "required": false,
+          "type": "string",
+          "enum": [
+            "ASC",
+            "DESC"
+          ],
+          "default": "DESC"
+        },
+        {
+          "name": "pageSize",
+          "in": "query",
+          "required": false,
+          "type": "integer",
+          "maximum": 20,
+          "default": 10
+        },
+        {
+          "name": "pageToken",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }
+      ],
+      "definitions": {},
+      "cases": [
+        {
+          "status": 200,
+          "parameters": {
+            "identifiersType": "SKU",
+            "identifiers": [
+              "GM-ZDPI-9B4E",
+              "HW-ZDPI-9B4E",
+              "TC-ZDPI-9B4E"
+            ],
+            "marketplaceIds": [
+              "ATVPDKIKX0DER",
+              "A2EUQ1WTGCTBG2"
+            ],
+            "includedData": [
+              "summaries",
+              "offers",
+              "fulfillmentAvailability",
+              "issues"
+            ],
+            "pageSize": 1
+          },
+          "response": {
+            "numberOfResults": 3,
+            "pagination": {
+              "nextToken": "xsdflkj324lkjsdlkj3423klkjsdfkljlk2j34klj2l3k4jlksdjl234",
+              "previousToken": "ilkjsdflkj234lkjds234234lkjl234lksjdflkj234234lkjsfsdflkj333d"
+            },
+            "items": [
+              {
+                "sku": "GM-ZDPI-9B4E",
+                "summaries": [
+                  {
+                    "marketplaceId": "ATVPDKIKX0DER",
+                    "asin": "B071VG5N9D",
+                    "productType": "LUGGAGE",
+                    "conditionType": "new_new",
+                    "status": [
+                      "BUYABLE"
+                    ],
+                    "itemName": "Hardside Carry-On Spinner Suitcase Luggage",
+                    "createdDate": "2021-02-01T00:00:00Z",
+                    "lastUpdatedDate": "2021-03-01T00:00:00Z",
+                    "mainImage": {
+                      "link": "https://www.example.com/luggage.png",
+                      "height": 500,
+                      "width": 500
+                    }
+                  },
+                  {
+                    "marketplaceId": "A2EUQ1WTGCTBG2",
+                    "asin": "B071VG5N9D",
+                    "productType": "LUGGAGE",
+                    "conditionType": "new_new",
+                    "status": [],
+                    "itemName": "Hardside Carry-On Spinner Suitcase Luggage",
+                    "createdDate": "2021-02-02T01:00:00Z",
+                    "lastUpdatedDate": "2021-03-05T00:00:00Z",
+                    "mainImage": {
+                      "link": "https://www.example.com/luggage.png",
+                      "height": 500,
+                      "width": 500
+                    }
+                  }
+                ],
+                "offers": [
+                  {
+                    "marketplaceId": "ATVPDKIKX0DER",
+                    "offerType": "B2C",
+                    "price": {
+                      "currencyCode": "USD",
+                      "amount": "100.00"
+                    }
+                  },
+                  {
+                    "marketplaceId": "A2EUQ1WTGCTBG2",
+                    "offerType": "B2C",
+                    "price": {
+                      "currencyCode": "CAD",
+                      "amount": "130.00"
+                    }
+                  }
+                ],
+                "fulfillmentAvailability": [
+                  {
+                    "fulfillmentChannelCode": "DEFAULT",
+                    "quantity": 100
+                  }
+                ],
+                "issues": [
+                  {
+                    "code": "90220",
+                    "message": "'size' is required but not supplied.",
+                    "severity": "ERROR",
+                    "attributeNames": [
+                      "size"
+                    ],
+                    "categories": [
+                      "MISSING_ATTRIBUTE",
+                      "LISTING"
+                    ],
+                    "marketplaceIds": [
+                      "ATVPDKIKX0DER"
+                    ]
+                  },
+                  {
+                    "code": "18027",
+                    "message": "We believe the main image has text, logo, graphic, or watermark that is not permitted for this product type. Submit a compliant image to lift the suppression. Also refer to Product image requirements.",
+                    "severity": "ERROR",
+                    "categories": [
+                      "INVALID_IMAGE",
+                      "LISTING"
+                    ],
+                    "enforcements": {
+                      "actions": [
+                        {
+                          "action": "SEARCH_SUPPRESSED"
+                        }
+                      ],
+                      "exemption": {
+                        "status": "EXEMPT_UNTIL_EXPIRY_DATE",
+                        "expiryDate": "2025-05-28T00:36:48.914Z"
+                      }
+                    },
+                    "marketplaceIds": [
+                      "ATVPDKIKX0DER",
+                      "A2EUQ1WTGCTBG2"
+                    ]
+                  },
+                  {
+                    "code": "99300",
+                    "message": "Product Detail Page Rules Violation (Inaccurate information on product detail page).",
+                    "severity": "ERROR",
+                    "categories": [
+                      "PRODUCT"
+                    ],
+                    "enforcements": {
+                      "actions": [
+                        {
+                          "action": "ATTRIBUTE_SUPPRESSED"
+                        }
+                      ],
+                      "exemption": {
+                        "status": "EXEMPT"
+                      }
+                    },
+                    "marketplaceIds": [
+                      "ATVPDKIKX0DER",
+                      "A2EUQ1WTGCTBG2"
+                    ]
+                  },
+                  {
+                    "code": "18155",
+                    "message": "The 'minimum price' is greater than the selling price (excluding shipping) for the listing. Review and update your price and/or minimum price.",
+                    "severity": "ERROR",
+                    "categories": [
+                      "INVALID_PRICE",
+                      "LISTING"
+                    ],
+                    "enforcements": {
+                      "actions": [
+                        {
+                          "action": "LISTING_SUPPRESSED"
+                        }
+                      ],
+                      "exemption": {
+                        "status": "NOT_EXEMPT"
+                      }
+                    },
+                    "marketplaceIds": [
+                      "ATVPDKIKX0DER"
+                    ]
+                  },
+                  {
+                    "code": "18742",
+                    "message": "Restricted Products Policy Violation",
+                    "severity": "ERROR",
+                    "categories": [
+                      "PRODUCT"
+                    ],
+                    "enforcements": {
+                      "actions": [
+                        {
+                          "action": "CATALOG_ITEM_REMOVED"
+                        }
+                      ],
+                      "exemption": {
+                        "status": "NOT_EXEMPT"
+                      }
+                    },
+                    "marketplaceIds": [
+                      "ATVPDKIKX0DER"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "status": 400,
+          "parameters": {
+            "sellerId": "SellerId",
+            "marketplaceIds": [
+              "invalid"
+            ]
+          },
+          "response": {
+            "errors": [
+              {
+                "code": "BAD_REQUEST",
+                "message": "Invalid input",
+                "details": "Invalid input"
+              }
+            ]
+          }
+        }
+      ],
+      "source": "listingsItems_2021-08-01.json"
+    }
+  }
+}

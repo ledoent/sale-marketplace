@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="model_sale_channel_company_rule" model="ir.rule">
+        <field name="name">sale_channel company</field>
+        <field name="model_id" ref="sale_channel.model_sale_channel" />
+        <field
+            name="domain_force"
+        >['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="model_sale_channel_product_company_rule" model="ir.rule">
+        <field name="name">sale_channel_product company</field>
+        <field name="model_id" ref="model_sale_channel_product" />
+        <field
+            name="domain_force"
+        >['|', ('sale_channel_id.company_id', '=', False), ('sale_channel_id.company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>
